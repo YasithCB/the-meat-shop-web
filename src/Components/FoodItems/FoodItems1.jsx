@@ -36,15 +36,15 @@ const FoodItems1 = () => {
       }; 
 
       const foodItems = [
-        {img:'/assets/img/food-items/item1_1.png', title:'CHICKEN', content:'The registration fee', price:'26.99'},
-        {img:'/assets/img/food-items/item1_2.png', title:'MUTTON', content:'The registration fee', price:'28.00'},
-        {img:'/assets/img/food-items/item1_3.png', title:'LAMB', content:'The registration fee', price:'100.99'},
-        {img:'/assets/img/food-items/item1_4.png', title:'VEAL', content:'The registration fee', price:'20.99'},
-        {img:'/assets/img/food-items/item1_5.png', title:'RABBIT', content:'The registration fee', price:'26.99'},
+        {img:'/assets/img/food-items/item1_1.png', title:'CHICKEN', content:'The registration fee', price:'7.99'},
         {img:'/assets/img/food-items/item1_6.png', title:'GOAT MEAT | CHEVON', content:'The registration fee', price:'28.00'},
-        {img:'/assets/img/food-items/item1_7.png', title:'BEEF', content:'The registration fee', price:'100.99'},
-        {img:'/assets/img/food-items/item1_8.png', title:'HORSE', content:'The registration fee', price:'20.99'},
-        {img:'/assets/img/food-items/item1_9.png', title:'CAMEL', content:'The registration fee', price:'20.99'},
+        {img:'/assets/img/food-items/item1_2.png', title:'MUTTON', content:'The registration fee', price:'16.00'},
+        {img:'/assets/img/food-items/item1_3.png', title:'LAMB', content:'The registration fee', price:'24.99'},
+        {img:'/assets/img/food-items/item1_7.png', title:'BEEF', content:'The registration fee', price:'18.99'},
+        {img:'/assets/img/food-items/item1_4.png', title:'VEAL', content:'The registration fee', price:'28.99'},
+        {img:'/assets/img/food-items/item1_9.png', title:'CAMEL', content:'The registration fee', price:'23.99'},
+        {img:'/assets/img/food-items/item1_5.png', title:'RABBIT', content:'The registration fee', price:'26.99'},
+        {img:'/assets/img/food-items/item1_8.png', title:'HORSE', content:'The registration fee', price:'34.99'},
       ];
 
     return (

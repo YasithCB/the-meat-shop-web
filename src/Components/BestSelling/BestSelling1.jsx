@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
+import {Flame} from "lucide-react";
 
 const BestSelling1 = () => {
 
     const foodItems = [
-        {img:'/assets/img/dishes/dishes1_1.png', title:'Chicken Fried Rice', content:'The registration fee', price:'$100.99'},    
-        {img:'/assets/img/dishes/dishes1_2.png', title:'Chinese Pasta', content:'The registration fee', price:'$15.99'},    
-        {img:'/assets/img/dishes/dishes1_3.png', title:'Chicken Pizza', content:'The registration fee', price:'$26.99'},    
-        {img:'/assets/img/dishes/dishes1_4.png', title:'Chicken Noodles', content:'The registration fee', price:'$39.00'},    
-        {img:'/assets/img/dishes/dishes1_5.png', title:'Grilled Chicken', content:'The registration fee', price:'$20.99'},    
+        {img:'/assets/img/dishes/dishes1_1.png', title:'Chicken', content:'The registration fee', price:'7.99'},
+        {img:'/assets/img/dishes/dishes1_2.png', title:'Beef', content:'The registration fee', price:'15.99'},
+        {img:'/assets/img/dishes/dishes1_3.png', title:'Mutton', content:'The registration fee', price:'18.99'},
+        {img:'/assets/img/dishes/dishes1_4.png', title:'Camel', content:'The registration fee', price:'29.00'},
+        {img:'/assets/img/dishes/dishes1_5.png', title:'Buffalo', content:'The registration fee', price:'18.99'},
       ]; 
 
     return (
@@ -19,12 +20,14 @@ const BestSelling1 = () => {
                     alt="shape" /></div>
             <div className="container">
                 <div className="title-area">
-                    <div className="sub-title text-center wow fadeInUp" data-wow-delay="0.5s">
-                        <img className="me-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />POPULAR DISHES<img className="ms-1"
-                            src="/assets/img/icon/titleIcon.svg" alt="icon" />
+                    <div
+                        className="sub-title text-center wow fadeInUp d-flex flex-row justify-content-center align-items-center"
+                        data-wow-delay="0.5s">
+                        <Flame className="me-2 text-danger" size={22}/>
+                        <p className='pt-1 text-danger'>WHATS POPULAR</p>
                     </div>
                     <h2 className="title wow fadeInUp" data-wow-delay="0.7s">
-                        Best selling Dishes
+                        Most Moving Meats
                     </h2>
                 </div>
                 <div className="dishes-card-wrap style1">
@@ -36,8 +39,8 @@ const BestSelling1 = () => {
                         <Link to="/menu">
                             <h3>{item.title}</h3>
                         </Link>
-                        <p>{item.content}</p>
-                        <h6>{item.price}</h6>
+                        <p>Price/KG</p>
+                        <h6>{item.price} AED</h6>
                         <div className="social-profile">
                             <span className="plus-btn"> <Link to="/shop/wishlist"> <i className="bi bi-heart"></i></Link></span>
                             <ul>
