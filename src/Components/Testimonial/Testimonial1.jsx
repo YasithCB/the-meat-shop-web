@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import VideoModal from "../VideoModal/VideoModal";
+import {MEAT_DETAILS} from "../../data/Constants.js";
 
 const Testimonial1 = () => {
 
@@ -13,7 +14,7 @@ const Testimonial1 = () => {
         arrows: false,
         swipeToSlide: true,
         autoplay: false,
-        autoplaySpeed: 4000,        
+        autoplaySpeed: 4000,
         responsive: [
           {
             breakpoint: 1399,
@@ -58,10 +59,43 @@ const Testimonial1 = () => {
         };
 
     const tesItems = [
-        {img:'/assets/img/testimonial/testimonialProfile1_1.png', title:'Albert Flores', designation:'Web Designer', content:'Penatibus magnis dis point parturient montes nascetur ridiculus mus Ut id lorem ac enim the vestibulum blandit nec sit amet felis. Fusce quis diam odio Cras mattis mi quis tincidunt'},
-        {img:'/assets/img/testimonial/testimonialProfile1_1.png', title:'Albert Flores', designation:'Web Designer', content:'Penatibus magnis dis point parturient montes nascetur ridiculus mus Ut id lorem ac enim the vestibulum blandit nec sit amet felis. Fusce quis diam odio Cras mattis mi quis tincidunt'},
-        {img:'/assets/img/testimonial/testimonialProfile1_1.png', title:'Albert Flores', designation:'Web Designer', content:'Penatibus magnis dis point parturient montes nascetur ridiculus mus Ut id lorem ac enim the vestibulum blandit nec sit amet felis. Fusce quis diam odio Cras mattis mi quis tincidunt'},
-      ]; 
+        {
+            img: "/assets/img/testimonial/testimonialProfile3_2.png",
+            title: "Omar Al Mansoori",
+            designation: "Restaurant Owner, Abu Dhabi",
+            content:
+                "Bemet Meat Shop has become my trusted supplier. Their quality and freshness are unmatched — every cut is tender and perfectly packed. I highly recommend them to anyone who values premium halal meat.",
+        },
+        {
+            img: "/assets/img/testimonial/testimonialProfile1_1.png",
+            title: "Sarah Johnson",
+            designation: "Home Chef, Dubai",
+            content:
+                "I love how fresh the chicken and mutton are every time! Their delivery is quick, and the packaging is very clean. I’ve stopped buying from supermarkets completely — Bemet is my go-to.",
+        },
+        {
+            img: "/assets/img/testimonial/testimonialProfile2_1.png",
+            title: "Mohammed Rahman",
+            designation: "Catering Business Owner",
+            content:
+                "We run a busy catering service, and consistency matters most. Bemet never fails to deliver on time with excellent quality. The staff is professional and courteous too.",
+        },
+        {
+            img: "/assets/img/testimonial/testimonialProfile2_2.png",
+            title: "Aisha Khalid",
+            designation: "Food Blogger, Sharjah",
+            content:
+                "From marinated meat to fresh lamb, everything I’ve tried has been exceptional. The flavor and texture make my recipes come alive — a must-try for food enthusiasts in the UAE!",
+        },
+        {
+            img: "/assets/img/testimonial/testimonialProfile3_1.png",
+            title: "James Carter",
+            designation: "Executive Chef, Dubai Marina",
+            content:
+                "I rely on Bemet for premium cuts used in our fine dining menu. The attention to detail in selection and freshness is truly professional — a perfect partner for restaurants.",
+        },
+    ];
+
 
     return (
     <section className="testimonial-section fix bg-color3">
@@ -91,7 +125,7 @@ const Testimonial1 = () => {
                                 <div className="swiper-wrapper">
                                 <Slider ref={sliderRef} {...settings}>
                                 {tesItems.map((item, i) => (
-                                    <div key={i} className="swiper-slide">
+                                    <div key={i} className="swiper-slide ps-2">
                                         <div className="testimonial-card style1">
                                             <div className="testimonial-header">
                                                 <div className="fancy-box">
@@ -129,21 +163,13 @@ const Testimonial1 = () => {
         <div className="marquee-wrapper style-2 text-slider section-padding">
             <div className="marquee-inner to-left">
                 <ul className="marqee-list d-flex">
-                    <li className="marquee-item style-2">
-                        <span className="text-slider"></span><span className="text-slider text-style">chicken pizza</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">GRILLED CHICKEN</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">BURGER</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN PIZZA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">FRESH PASTA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">ITALIANO FRENCH FRY</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN FRY</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">chicken pizza</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">GRILLED CHICKEN</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">BURGER</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN PIZZA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">FRESH PASTA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">ITALIANO FRENCH FRY</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN FRY</span>
+                    <li className="marquee-item style1">
+                        {MEAT_DETAILS.map((item, index) => (
+                            <React.Fragment key={index}>
+                                <span className="text-slider"></span>
+                                <span className="text-slider text-style">{item.title}</span>
+                            </React.Fragment>
+                        ))}
                     </li>
                 </ul>
             </div>

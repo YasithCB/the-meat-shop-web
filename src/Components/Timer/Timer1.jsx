@@ -1,6 +1,39 @@
 import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
 
 const Timer1 = () => {
+    // 🕒 Set your target date/time here
+    const targetDate = new Date("2025-11-31T23:59:59").getTime();
+
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                clearInterval(interval);
+                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            setTimeLeft({ days, hours, minutes, seconds });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [targetDate]);
+
     return (
         <div className="timer-section fix">
         <div className="timer-wrapper style1">
@@ -32,19 +65,19 @@ const Timer1 = () => {
                                     </div>
                                     <div className="clock-wrapper">
                                         <div className="clock">
-                                            <div className="number" id="days">326</div>
+                                            <div className="number">{timeLeft.days}</div>
                                             <div className="text">days</div>
                                         </div>
                                         <div className="clock">
-                                            <div className="number" id="hours">11</div>
+                                            <div className="number">{timeLeft.hours}</div>
                                             <div className="text">hrs</div>
                                         </div>
                                         <div className="clock">
-                                            <div className="number" id="minutes">44</div>
+                                            <div className="number">{timeLeft.minutes}</div>
                                             <div className="text">mins</div>
                                         </div>
                                         <div className="clock">
-                                            <div className="number" id="seconds">26</div>
+                                            <div className="number">{timeLeft.seconds}</div>
                                             <div className="text">secs</div>
                                         </div>
                                     </div>

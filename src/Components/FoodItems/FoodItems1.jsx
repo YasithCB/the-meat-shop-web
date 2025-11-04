@@ -43,7 +43,6 @@ const FoodItems1 = () => {
         {img:'/assets/img/food-items/item1_7.png', title:'BEEF', content:'The registration fee', price:'18.99'},
         {img:'/assets/img/food-items/item1_4.png', title:'VEAL', content:'The registration fee', price:'28.99'},
         {img:'/assets/img/food-items/item1_9.png', title:'CAMEL', content:'The registration fee', price:'23.99'},
-        {img:'/assets/img/food-items/item1_5.png', title:'RABBIT', content:'The registration fee', price:'26.99'},
         {img:'/assets/img/food-items/item1_8.png', title:'HORSE', content:'The registration fee', price:'34.99'},
       ];
 

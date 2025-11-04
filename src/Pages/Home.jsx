@@ -22,7 +22,7 @@ const Home = () => {
             <CtaBanner1></CtaBanner1>
             <FoodItem1></FoodItem1>
             <Timer1></Timer1>
-            <Team1></Team1>
+            {/*<Team1></Team1>*/}
             <Testimonial1></Testimonial1>
             <Blog1></Blog1>
             <Gallery1></Gallery1>
