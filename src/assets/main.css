@@ -53,8 +53,9 @@
   --black: #000;
   --white: #fff;
   --theme: #EB0029;
+  --theme-hover: #c60020;
   --theme2:#FC791A;
-  --title:#010F1C;
+  --title:#0a0a0a;
   --dark: #222222;
   --text: #5C6574;
   --text2: #ababab;
@@ -491,7 +492,7 @@ textarea.form-control:focus {
 
 .btn-wrapper {
   position: relative;
-  max-width: 200px;
+  max-width: 300px;
 }
 .btn-wrapper:hover .arrow-btn {
   background: var(--theme2);
@@ -5033,6 +5034,7 @@ input.main-search-input::placeholder {
   z-index: 1;
 }
 .map-wrapper iframe {
+  height: 60vh;
   position: relative;
   z-index: -1;
 }
@@ -5132,6 +5134,15 @@ input.main-search-input::placeholder {
   background-color: var(--white);
   border: 1px solid rgba(235, 0, 41, 0.25);
   border-radius: 8px;
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* optional: vertically center content */
+    text-align: center; /* optional: cleaner look */
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
 }
 .contact-box.style1 .contact-icon {
   margin-bottom: 25px;
@@ -7245,7 +7256,6 @@ input.main-search-input::placeholder {
 
 .timer-wrap.style1 .timer-thumb:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
 
@@ -7500,11 +7510,25 @@ input.main-search-input::placeholder {
 }
 
 .single-menu-items {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.35s ease;
+    transform: translateY(0);
 }
+
+.single-menu-items:hover {
+    background-color: #ffe4e4;
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.1);
+    transform: translateY(-6px);
+    cursor: pointer;
+}
+
 @media (max-width: 1399px) {
   .single-menu-items {
     margin-top: 25px;
@@ -9079,7 +9103,7 @@ input.main-search-input::placeholder {
 }
 .services-card.style2 .services-card_icon {
   position: relative;
-  padding: 37px 40px;
+  padding: 25px 35px;
   margin-bottom: 25px;
   display: inline-block;
   z-index: 3;
@@ -9089,8 +9113,9 @@ input.main-search-input::placeholder {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
 }
-.services-card.style2 .services-card_icon img {
+.services-card.style2 .services-card_icon-inner {
   position: absolute;
+    height: 40px !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -9336,9 +9361,16 @@ input.main-search-input::placeholder {
   margin-top: -120px;
 }
 .single-food-items .item-thumb img {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 10px;
 }
+.single-food-items .item-thumb img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+}
+
 .single-food-items .item-thumb .circle-shape {
   position: absolute;
   top: -5px;
@@ -9901,9 +9933,11 @@ input.main-search-input::placeholder {
   overflow: hidden;
 }
 .blog-card.style1 .blog-thumb img {
-  background-size: cover;
-  background-position: center;
-  transition: all 0.4s;
+    width: 100%;
+    height: 300px; /* or your desired height */
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
   -ms-transition: all 0.4s;

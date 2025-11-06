@@ -1,5 +1,5 @@
 import BreadCumb from "../Components/Common/BreadCumb";
-import FoodItem4 from "../Components/FoodItem/FoodItem4";
+import FoodItem4 from "../Components/ShopShowcase/FoodItem4";
 import Gallery1 from "../Components/Gallery/Gallery1";
 import Timer2 from "../Components/Timer/Timer2";
 

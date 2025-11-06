@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import {Flame} from "lucide-react";
+import {useContextElement} from "../../context/Context.jsx";
+import LoadingDots from "../Custom/loadingDots.jsx";
+import {getImageUrl} from "../../utils/util.js";
 
 const BestSelling1 = () => {
+    const { products } = useContextElement();
 
-    const foodItems = [
-        {img:'/assets/img/dishes/dishes1_1.png', title:'Chicken', content:'The registration fee', price:'7.99'},
-        {img:'/assets/img/dishes/dishes1_2.png', title:'Beef', content:'The registration fee', price:'15.99'},
-        {img:'/assets/img/dishes/dishes1_3.png', title:'Mutton', content:'The registration fee', price:'18.99'},
-        {img:'/assets/img/dishes/dishes1_4.png', title:'Camel', content:'The registration fee', price:'29.00'},
-        {img:'/assets/img/dishes/dishes1_5.png', title:'Buffalo', content:'The registration fee', price:'18.99'},
-      ]; 
+    if (products.length === 0) return <LoadingDots />
 
     return (
         <section className="popular-dishes-section fix section-padding">
@@ -31,13 +29,13 @@ const BestSelling1 = () => {
                     </h2>
                 </div>
                 <div className="dishes-card-wrap style1">
-                {foodItems.map((item, i) => (
+                {products.slice(0,5).map((item, i) => (
                     <div key={i} className="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s">
                         <div className="dishes-thumb">
-                            <img src={item.img} alt="thmb" />
+                            <img src={getImageUrl(item.img)} alt="thmb" />
                         </div>
                         <Link to="/menu">
-                            <h3>{item.title}</h3>
+                            <h3>{item.name}</h3>
                         </Link>
                         <p>Price/KG</p>
                         <h6>{item.price} AED</h6>
@@ -51,7 +49,7 @@ const BestSelling1 = () => {
                     ))}
                 </div>
                 <div className="btn-wrapper  wow fadeInUp" data-wow-delay="0.9s">
-                    <Link className="theme-btn" to="/menu2">VIEW ALL ITEM <i className="bi bi-arrow-right"></i></Link>
+                    <Link className="theme-btn" to="/menu2">VIEW ALL PRODUCTS <i className="bi bi-arrow-right"></i></Link>
                 </div>
             </div>
         </div>

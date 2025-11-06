@@ -8,13 +8,13 @@ const ShopCard = ({img,title,content,price}) => {
             <div className="circle-shape"><img className="cir36"
                     src="/assets/img/food-items/circleShape.png" alt="shape" /></div>
         </div>
-        <div className="dishes-content">
+        <div className="dishes-content pt-2">
             <Link to="/shop/shop-details">
                 <h3>{title}</h3>
             </Link>
             <div className="star"><img src="/assets/img/icon/star2.svg" alt="icon" /></div>
             <div className="text">{content}</div>
-            <h6>{price}</h6>
+            <h6>{price} AED</h6>
             <Link to="/shop/shop-details" className="theme-btn style6"> Order Now <i className="bi bi-basket2"></i></Link>
         </div>
     </div>

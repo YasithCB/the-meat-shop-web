@@ -1,5 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import VideoModal from "../VideoModal/VideoModal";
+import {UserRoundPen} from "lucide-react";
+import {ABOUT_US_DESCRIPTION, ABOUT_US_TITLE, MEAT_DETAILS} from "../../data/Constants.js";
+
+import { Beef } from 'lucide-react';
+import { DollarSign } from 'lucide-react';
 
 const About2 = () => {
 
@@ -35,30 +40,36 @@ const About2 = () => {
                         </div>
                         <div className="col-lg-6">
                             <div className="title-area">
-                                <div className="sub-title text-start wow fadeInUp" data-wow-delay="0.5s">
-                                    <img className="me-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />About US<img
-                                        className="ms-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />
+                                <div
+                                    className="sub-title wow fadeInUp d-flex flex-row align-items-center"
+                                    data-wow-delay="0.5s">
+                                    <UserRoundPen className="me-2 text-danger" size={22}/>
+                                    <p className='pt-1 text-danger'>About Us</p>
                                 </div>
                                 <h2 className="title text-start wow fadeInUp" data-wow-delay="0.7s">
-                                    Variety of flavours from american cuisine
+                                    {ABOUT_US_TITLE}
                                 </h2>
-                                <div className="text text-start wow fadeInUp" data-wow-delay="0.8s">Every dish is not just
-                                    prepared it is a crafted with a savor the a utmost precision and a deep understanding
-                                    sdf of flavor harmony. The experienced hands of our chefs</div>
+                                <div className="text text-start wow fadeInUp" data-wow-delay="0.8s">
+                                    {ABOUT_US_DESCRIPTION}
+                                </div>
                             </div>
                             <div className="fancy-box-wrapper">
                                 <div className="fancy-box">
-                                    <div className="item"><img src="/assets/img/icon/aboutIcon1_1.svg" alt="icon" /></div>
                                     <div className="item">
-                                        <h6>super quality food</h6>
-                                        <p>Served our Testy Food & good food by friendly</p>
+                                        <div className='d-flex gap-2'>
+                                            <Beef className='text-danger' />
+                                            <h6>Super Fresh Meat</h6>
+                                        </div>
+                                        <p>Enjoy premium cuts of fresh meat, prepared with care and served with authentic flavor.</p>
                                     </div>
                                 </div>
                                 <div className="fancy-box">
-                                    <div className="item"><img src="/assets/img/icon/aboutIcon1_2.svg" alt="icon" /></div>
                                     <div className="item">
-                                        <h6>Qualified Chef</h6>
-                                        <p>Served our Testy Food & good food by friendly</p>
+                                        <div className='d-flex gap-2'>
+                                            <DollarSign className='text-danger' />
+                                            <h6>Unbeatable Price</h6>
+                                        </div>
+                                        <p>Get top-quality food at prices that can’t be matched — delicious and affordable every time.</p>
                                     </div>
                                 </div>
                             </div>
@@ -71,20 +82,12 @@ const About2 = () => {
             <div className="marquee-inner to-left">
                 <ul className="marqee-list d-flex">
                     <li className="marquee-item style1">
-                        <span className="text-slider"></span><span className="text-slider text-style">chicken pizza</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">GRILLED CHICKEN</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">BURGER</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN PIZZA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">FRESH PASTA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">ITALIANO FRENCH FRY</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN FRY</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">chicken pizza</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">GRILLED CHICKEN</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">BURGER</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN PIZZA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">FRESH PASTA</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">ITALIANO FRENCH FRY</span>
-                        <span className="text-slider"></span><span className="text-slider text-style">CHICKEN FRY</span>
+                        {MEAT_DETAILS.map((item, index) => (
+                            <React.Fragment key={index}>
+                                <span className="text-slider"></span>
+                                <span className="text-slider text-style">{item.title}</span>
+                            </React.Fragment>
+                        ))}
                     </li>
                 </ul>
             </div>

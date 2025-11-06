@@ -6,8 +6,14 @@ import Gallery1 from "../Components/Gallery/Gallery1";
 import Offer2 from "../Components/Offer/Offer2";
 import Team3 from "../Components/Team/Team3";
 import Testimonial2 from "../Components/Testimonial/Testimonial2";
+import {useEffect} from "react";
+import {scrollToTop} from "../utils/util.js";
 
 const AboutPage = () => {
+    useEffect(() => {
+        scrollToTop();
+    })
+
     return (
         <div>
             <BreadCumb

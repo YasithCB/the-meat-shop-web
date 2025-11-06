@@ -5,10 +5,6 @@ import ShopDetails from "../Components/ShopDetails/ShopDetails";
 const ShopDetailsPage = () => {
     return (
         <div>
-             <BreadCumb
-                bgimg="/assets/img/bg/breadcumb.jpg"
-                Title="Shop Details"
-            ></BreadCumb>    
             <ShopDetails></ShopDetails>      
             <BestSelling1></BestSelling1>   
         </div>

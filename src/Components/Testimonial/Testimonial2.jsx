@@ -1,5 +1,7 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
+import {TESTIMONIALS} from "../../data/Constants.js";
+import {MessageCircle} from "lucide-react";
 
 const Testimonial2 = () => {
 
@@ -45,12 +47,6 @@ const Testimonial2 = () => {
           }; 
 
 
-    const tesItems = [
-        {img:'/assets/img/testimonial/testimonialProfile2_1.png', content:'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classNameical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock !'},
-        {img:'/assets/img/testimonial/testimonialProfile2_2.png', content:'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classNameical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock !'},
-        {img:'/assets/img/testimonial/testimonialProfile2_3.png', content:'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classNameical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock !'},
-      ]; 
-
     return (
         <section className="testimonial-section fix section-padding bg-white">
         <div className="vagetable-shape">
@@ -66,9 +62,11 @@ const Testimonial2 = () => {
                     <div className="row gx-80 gy-5">
                         <div className="col-xl-7 order-2 order-xl-1">
                             <div className="title-area">
-                                <div className="sub-title text-start wow fadeInUp" data-wow-delay="0.5s">
-                                    <img className="me-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />TESTIMONIALS<img
-                                        className="ms-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />
+                                <div
+                                    className="sub-title text-center wow fadeInUp d-flex flex-row align-items-center"
+                                    data-wow-delay="0.5s">
+                                    <MessageCircle className="me-2 text-danger" size={22}/>
+                                    <p className='pt-1 text-danger'>TESTIMONIALS</p>
                                 </div>
                                 <h2 className="title  text-start wow fadeInUp" data-wow-delay="0.7s">
                                     what have lots of happy customer feedback
@@ -79,7 +77,7 @@ const Testimonial2 = () => {
                                 <div className="swiper testimonialSliderTwo">
                                     <div className="swiper-wrapper">
                                     <Slider ref={sliderRef} {...settings}>
-                                    {tesItems.map((item, i) => (
+                                    {TESTIMONIALS.map((item, i) => (
                                         <div key={i} className="swiper-slide">
                                             <div className="testimonial-card style2">
                                                 <div className="quote"><img src="/assets/img/icon/quote.svg" alt="icon" />

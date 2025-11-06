@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ShopDetails = () => {
     return (
-        <div className="shop-details-section section-padding pb-0 fix">
+        <div className="shop-details-section section-padding py-0 fix">
         <div className="shop-details-wrapper style1">
             <div className="container">
                 <div className="shop-details bg-white">

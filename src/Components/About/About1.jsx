@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import { UserRoundPen } from 'lucide-react';
+import {ABOUT_US_DESCRIPTION, ABOUT_US_TITLE} from "../../data/Constants.js";
 
 const About1 = () => {
 
@@ -40,10 +41,10 @@ const About1 = () => {
                                         <p className='pt-1 text-danger'>{aboutContent.subtitle}</p>
                                     </div>
                                     <h2 className="title wow fadeInUp" data-wow-delay="0.7s">
-                                        {aboutContent.title}
+                                        {ABOUT_US_TITLE}
                                     </h2>
                                     <div className="text wow fadeInUp"
-                                         data-wow-delay="0.8s">{aboutContent.content}</div>
+                                         data-wow-delay="0.8s">{ABOUT_US_DESCRIPTION}</div>
                                     <div className="btn-wrapper wow fadeInUp" data-wow-delay="0.9s">
                                         <Link className="theme-btn" to={aboutContent.btnUrl}>{aboutContent.btnName} <i
                                             className="bi bi-arrow-right"></i></Link>

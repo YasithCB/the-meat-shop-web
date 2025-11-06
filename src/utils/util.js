@@ -1,0 +1,30 @@
+export const getImageUrl = (path) => {
+    if (!path) return `${import.meta.env.VITE_API_BASE_URL}/uploads/default-image.png`;
+
+    // Normalize path
+    let cleanPath = path.replace(/\\/g, "/"); // convert backslashes
+    if (cleanPath.startsWith("/")) cleanPath = cleanPath.slice(1); // remove leading slash
+
+    return `${import.meta.env.VITE_API_BASE_URL}/${cleanPath}`;
+};
+
+// utils/date.js
+export const formatDate = (dateString) => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+
+    // Format: Month Day, Year (e.g., Nov 5, 2025)
+    return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
+};
+
+export const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth", // smooth scroll
+    });
+};

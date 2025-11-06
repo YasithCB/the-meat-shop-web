@@ -5,9 +5,9 @@ import Footer1 from '../Components/Footer/Footer1';
 const Layout2 = () => {
     return (
         <div className='main-page-area2 bg-color2'>
-            <Header2></Header2>
-            <Outlet></Outlet>
-            <Footer1></Footer1>
+            <Header2 />
+            <Outlet />
+            <Footer1 />
         </div>
     );
 };

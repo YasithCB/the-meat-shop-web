@@ -4,7 +4,7 @@ import Contact1 from "../Components/Contact/Contact1";
 import CtaBanner2 from "../Components/CtaBanner/CtaBanner2";
 import CtaBanner3 from "../Components/CtaBanner/CtaBanner3";
 import FeatureCategory1 from "../Components/FeatureCategory/FeatureCategory1";
-import FoodItem2 from "../Components/FoodItem/FoodItem2";
+import FoodItem2 from "../Components/ShopShowcase/FoodItem2";
 import HeroBanner2 from "../Components/HeroBanner/HeroBanner2";
 import Offer2 from "../Components/Offer/Offer2";
 import Team2 from "../Components/Team/Team2";

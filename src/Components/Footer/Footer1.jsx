@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {ABOUT_US_DESCRIPTION, ADDRESS, CONTACT1, EMAIL} from "../../data/Constants.js";
 
 const Footer1 = () => {
     return (
@@ -20,7 +21,7 @@ const Footer1 = () => {
                                     <div className="item1"><i className="bi bi-geo-alt-fill"></i></div>
                                     <div className="item2">
                                         <h6>address</h6>
-                                        <p>Abu Dhabi | UAE </p>
+                                        <p>{ADDRESS}</p>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +30,7 @@ const Footer1 = () => {
                                     <div className="item1"><i className="bi bi-envelope-fill"></i></div>
                                     <div className="item2">
                                         <h6>send email</h6>
-                                        <p>info@themeatshop.com</p>
+                                        <p>{EMAIL.INFO}</p>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@ const Footer1 = () => {
                                     <div className="item1"><i className="bi bi-telephone-fill"></i></div>
                                     <div className="item2">
                                         <h6>call emergency</h6>
-                                        <p>+971 50 2 303130</p>
+                                        <p>{CONTACT1}</p>
                                     </div>
                                 </div>
                             </div>
@@ -54,11 +55,7 @@ const Footer1 = () => {
                                     </Link>
                                 </div>
                                 <div className="footer-content">
-                                    <p>
-                                        Fresh, high-quality meats sourced locally and internationally. Premium cuts of
-                                        beef, lamb, chicken, and more, carefully prepared to bring authentic flavors to
-                                        your table.
-                                    </p>
+                                    <p>{ABOUT_US_DESCRIPTION}</p>
 
                                     <div className="social-icon d-flex align-items-center">
                                         <a href="#"><i className="bi bi-facebook"></i></a>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import {useEffect, useState} from "react";
+import {BadgePercent} from "lucide-react";
 
 const Timer1 = () => {
     // 🕒 Set your target date/time here
@@ -36,7 +37,7 @@ const Timer1 = () => {
 
     return (
         <div className="timer-section fix">
-        <div className="timer-wrapper style1">
+        <div className="timer-wrapper style1 section-padding">
             <div className="container">
                 <div className="timer-wrap style1">
                     <div className="shape1 d-none d-xxl-block"><img className="cir36" src="/assets/img/shape/timerShape1_1.svg"
@@ -55,9 +56,11 @@ const Timer1 = () => {
                             <div className="col-lg-6 d-flex align-items-center">
                                 <div className="timer-card style1 wow fadeInUp" data-wow-delay="0.5s">
                                     <div className="title-area">
-                                        <div className="sub-title text-center wow fadeInUp" data-wow-delay="0.5s">
-                                            <img className="me-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />Special
-                                            Offer<img className="ms-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />
+                                        <div
+                                            className="sub-title text-center wow fadeInUp d-flex flex-row justify-content-center align-items-center"
+                                            data-wow-delay="0.5s">
+                                            <BadgePercent className="me-2 text-white" size={22}/>
+                                            <p className='pt-1 text-white'>SPECIAL OFFER</p>
                                         </div>
                                         <h2 className="title text-white wow fadeInUp" data-wow-delay="0.7s">
                                             Get 30% Discount Every Item

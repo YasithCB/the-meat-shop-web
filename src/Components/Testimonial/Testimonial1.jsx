@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import VideoModal from "../VideoModal/VideoModal";
-import {MEAT_DETAILS} from "../../data/Constants.js";
+import {MEAT_DETAILS, TESTIMONIALS} from "../../data/Constants.js";
+import { MessageCircle} from 'lucide-react';
 
-const Testimonial1 = () => {
+const Testimonial1 = ({className = ''}) => {
 
     const settings = {
         dots: false,
@@ -58,47 +59,9 @@ const Testimonial1 = () => {
           setToggle(!toggle);
         };
 
-    const tesItems = [
-        {
-            img: "/assets/img/testimonial/testimonialProfile3_2.png",
-            title: "Omar Al Mansoori",
-            designation: "Restaurant Owner, Abu Dhabi",
-            content:
-                "Bemet Meat Shop has become my trusted supplier. Their quality and freshness are unmatched — every cut is tender and perfectly packed. I highly recommend them to anyone who values premium halal meat.",
-        },
-        {
-            img: "/assets/img/testimonial/testimonialProfile1_1.png",
-            title: "Sarah Johnson",
-            designation: "Home Chef, Dubai",
-            content:
-                "I love how fresh the chicken and mutton are every time! Their delivery is quick, and the packaging is very clean. I’ve stopped buying from supermarkets completely — Bemet is my go-to.",
-        },
-        {
-            img: "/assets/img/testimonial/testimonialProfile2_1.png",
-            title: "Mohammed Rahman",
-            designation: "Catering Business Owner",
-            content:
-                "We run a busy catering service, and consistency matters most. Bemet never fails to deliver on time with excellent quality. The staff is professional and courteous too.",
-        },
-        {
-            img: "/assets/img/testimonial/testimonialProfile2_2.png",
-            title: "Aisha Khalid",
-            designation: "Food Blogger, Sharjah",
-            content:
-                "From marinated meat to fresh lamb, everything I’ve tried has been exceptional. The flavor and texture make my recipes come alive — a must-try for food enthusiasts in the UAE!",
-        },
-        {
-            img: "/assets/img/testimonial/testimonialProfile3_1.png",
-            title: "James Carter",
-            designation: "Executive Chef, Dubai Marina",
-            content:
-                "I rely on Bemet for premium cuts used in our fine dining menu. The attention to detail in selection and freshness is truly professional — a perfect partner for restaurants.",
-        },
-    ];
-
 
     return (
-    <section className="testimonial-section fix bg-color3">
+    <section className={`testimonial-section fix bg-color3 ${className}`}>
         <div className="testimonial-wrapper style1 section-padding ">
             <div className="shape"><img src="/assets/img/testimonial/testimonialThumb1_1.png" alt="thumb" /></div>
             <div className="shape2"><img src="/assets/img/shape/testimonialShape1_1.png" alt="shape" /></div>
@@ -112,9 +75,11 @@ const Testimonial1 = () => {
                     </div>
                     <div className="col-xl-7">
                         <div className="title-area">
-                            <div className="sub-title text-center wow fadeInUp" data-wow-delay="0.5s">
-                                <img className="me-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />Testimonials<img
-                                    className="ms-1" src="/assets/img/icon/titleIcon.svg" alt="icon" />
+                            <div
+                                className="sub-title text-center wow fadeInUp d-flex flex-row justify-content-center align-items-center"
+                                data-wow-delay="0.5s">
+                                <MessageCircle className="me-2 text-danger" size={22}/>
+                                <p className='pt-1 text-danger'>TESTIMONIALS</p>
                             </div>
                             <h2 className="title text-white wow fadeInUp" data-wow-delay="0.7s">
                                 What our Clients Say
@@ -124,7 +89,7 @@ const Testimonial1 = () => {
                             <div className="swiper testmonialSliderOne">
                                 <div className="swiper-wrapper">
                                 <Slider ref={sliderRef} {...settings}>
-                                {tesItems.map((item, i) => (
+                                {TESTIMONIALS.map((item, i) => (
                                     <div key={i} className="swiper-slide ps-2">
                                         <div className="testimonial-card style1">
                                             <div className="testimonial-header">
@@ -154,7 +119,7 @@ const Testimonial1 = () => {
                     </div>
                 </div>
             </div>
-            <div className="btn-wrap">
+            <div className="btn-wrap mt-5 pt-5">
                 <div onClick={previous} className="arrow-prev"><i className="bi bi-arrow-left"></i></div>
                 <div onClick={next} className="arrow-next"><i className="bi bi-arrow-right"></i></div>
             </div>
@@ -163,7 +128,7 @@ const Testimonial1 = () => {
         <div className="marquee-wrapper style-2 text-slider section-padding">
             <div className="marquee-inner to-left">
                 <ul className="marqee-list d-flex">
-                    <li className="marquee-item style1">
+                    <li className="marquee-item style-2">
                         {MEAT_DETAILS.map((item, index) => (
                             <React.Fragment key={index}>
                                 <span className="text-slider"></span>

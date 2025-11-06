@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import {CloudDownload} from 'lucide-react';
 
-const CtaBanner4 = () => {
+const CtaBanner4 = ({className = ''}) => {
     return (
-<section className="cta-section section-padding fix">
+<section className={`cta-section section-padding fix ${className}`} >
         <div className="cta-wrapper style3">
             <div className="container">
                 <div className="cta-wrap  section-padding pt-xl-0 pb-xl-0 style3">
@@ -23,10 +24,13 @@ const CtaBanner4 = () => {
                     <div className="row g-5">
                         <div className="col-xl-6  d-flex align-items-center justify-content-center order-2 order-xl-1">
                             <div className="cta-content">
-                                <h6 className="text-white wow fadeInUp" data-wow-delay="0.5s"><img className="me-1"
-                                        src="/assets/img/icon/titleIconWhite.svg" alt="icon"/>DOWNLOAD APP<img
-                                        className="ms-1" src="/assets/img/icon/titleIconWhite.svg" alt="icon"/></h6>
-                                <h3 className="wow fadeInUp" data-wow-delay="0.7s">Download food app Order today!</h3>
+                                <div
+                                    className="sub-title text-center wow fadeInUp d-flex flex-row align-items-center"
+                                    data-wow-delay="0.5s">
+                                    <CloudDownload className="me-2 text-danger" size={22}/>
+                                    <p className='pt-1 text-white'>DOWNLOAD APP</p>
+                                </div>
+                                <h3 className="wow fadeInUp" data-wow-delay="0.7s">Download The app Order today!</h3>
                                 <div className="btn-wrapper d-md-flex align-items-center gap-2">
                                     <div className="btns">
                                         <Link className="apple-btn wow fadeInUp" data-wow-delay="0.9s" to="https://www.apple.com/store">

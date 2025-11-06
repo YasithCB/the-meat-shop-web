@@ -1,3 +1,85 @@
-/*.blog-section .slick-track {*/
-/*    width: auto !important;*/
-/*}*/
+
+/* CONTACT --------------------------------------------------------------------------- */
+.contact-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    background-color: rgb(255, 243, 243);
+}
+
+/* CONTACT --------------------------------------------------------------------------- */
+
+/* BG --------------------------------------------------------------------------- */
+.bg-hover-red {
+    transition: all 0.3s ease;
+}.bg-hover-red:hover {
+    background-color: rgb(205, 0, 0) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* BG --------------------------------------------------------------------------- */
+
+
+/* LOGIN MODEL --------------------------------------------------------------------------- */
+.role-box {
+    width: 120px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.role-box:hover {
+    background-color: rgba(253, 13, 13, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.role-box.active {
+    background-color: var(--theme);
+    color: var(--theme);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(253, 13, 33, 0.4);
+    border-color: var(--theme);
+}
+
+/* Active role box */
+.role-box.active i,
+.role-box.active h6 {
+    color: #fff !important;
+}
+/* Non-active role box */
+.role-box i,
+.role-box h6 {
+    color: #222 !important;
+    transition: color 0.3s ease; /* smooth color change */
+}
+
+.role-box-group {
+    user-select: none;
+}
+/* LOGIN MODEL --------------------------------------------------------------------------- */
+
+/* FONT / TEXT --------------------------------------------------------------------------- */
+.fs-7 {
+    font-size: 0.85rem;
+}
+
+.text-hover-red:hover {
+    color: var(--theme) !important;
+    cursor: pointer;
+}
+/* FONT / TEXT --------------------------------------------------------------------------- */
+
+/* BTN / BUTTON --------------------------------------------------------------------------- */
+.btn-red {
+    background-color: var(--theme) !important;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}.btn-red:hover {
+    background-color: var(--theme-hover) !important;
+}
+
+/* BTN / BUTTON --------------------------------------------------------------------------- */

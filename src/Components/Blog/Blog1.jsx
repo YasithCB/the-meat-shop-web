@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Rss } from 'lucide-react';
+import {BLOG_ARTICLES} from "../../data/Constants.js";
 
 
 const Blog1 = () => {
@@ -47,63 +48,6 @@ const Blog1 = () => {
         sliderRef.current.slickPrev();
     };
 
-    const blogItems = [
-        {
-            img: 'https://www.foodandwine.com/thmb/2k2Kq24_fMvHCyLMPRSNrpg5QdE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/beef-wellington-FT-RECIPE0321-c9a63fccde3b45889ad78fdad078153f.jpg',
-            title: 'Exploring Gourmet Meat Dishes in Abu Dhabi',
-            description: 'Discover the best gourmet meat recipes and restaurants in Abu Dhabi. From lamb to veal, indulge in flavors you cannot resist.',
-            author: 'John Smith',
-            source: { name: 'Gourmet Times' },
-            publishedAt: '2025-11-01T10:30:00Z',
-            link: 'https://www.gourmettimes.com/abu-dhabi-meat-dishes'
-        },
-        {
-            img: 'https://simmerandsage.com/wp-content/uploads/2023/07/Korean-Fried-Chicken-Soy-Garlic1.jpg',
-            title: 'Top 10 Chicken Recipes You Must Try',
-            description: 'From crispy fried chicken to creamy casseroles, explore the top 10 chicken recipes that are perfect for family dinners.',
-            author: 'Emily Brown',
-            source: { name: 'Food Daily' },
-            publishedAt: '2025-11-02T15:45:00Z',
-            link: 'https://www.fooddaily.com/top-10-chicken-recipes'
-        },
-        {
-            img: 'https://cdn.tasteatlas.com//images/dishes/5dd8d8db50b5430482e4da8722c10aea.jpg?w=375&h=280',
-            title: 'Beef Delicacies from Around the World',
-            description: 'A culinary journey featuring beef dishes from different cultures. Learn to make classic steaks, roasts, and traditional beef stews.',
-            author: 'Michael Lee',
-            source: { name: 'Culinary Explorer' },
-            publishedAt: '2025-11-03T09:20:00Z',
-            link: 'https://www.culinaryexplorer.com/beef-delicacies-world'
-        },
-        {
-            img: 'https://img.delicious.com.au/M6DbT7bN/del/2020/05/easy-carve-lamb-oregano-garlic-and-feta-potatoes-131400-3.jpg',
-            title: 'Lamb Recipes for Festive Occasions',
-            description: 'Celebrate special occasions with these lamb recipes. From roasted lamb to lamb curry, perfect for family gatherings.',
-            author: 'Sara Johnson',
-            source: { name: 'Festive Eats' },
-            publishedAt: '2025-11-04T12:00:00Z',
-            link: 'https://www.festiveeats.com/lamb-recipes'
-        },
-        {
-            img: 'https://www.licious.in/blog/wp-content/uploads/2023/02/shutterstock_2205168763.jpg',
-            title: 'Mutton Recipes That Will Wow Your Guests',
-            description: 'From slow-cooked mutton curries to spicy grilled mutton, these recipes will impress every meat lover at your table.',
-            author: 'David Williams',
-            source: { name: 'Meat Lovers Hub' },
-            publishedAt: '2025-11-04T17:15:00Z',
-            link: 'https://www.meatlovershub.com/mutton-recipes'
-        },
-        {
-            img: 'https://www.howtocook.recipes/wp-content/uploads/2021/11/Steak-recipe.jpg',
-            title: 'Perfect Steak Recipes for Home Cooking',
-            description: 'Learn how to cook the perfect steak at home with these easy-to-follow recipes, tips on seasoning, and cooking techniques.',
-            author: 'Laura Martinez',
-            source: { name: 'Home Chef Magazine' },
-            publishedAt: '2025-11-05T11:45:00Z',
-            link: 'https://www.homechefmag.com/perfect-steak-recipes'
-        }
-    ];
-
     return (
         <section className="blog-section section-padding fix">
             <div className="burger-shape">
@@ -129,7 +73,7 @@ const Blog1 = () => {
                                 <div className="swiper-wrapper cs_slider_gap_301">
 
                                     <Slider ref={sliderRef} {...settings}>
-                                        {blogItems.map((item, i) => (
+                                        {BLOG_ARTICLES.map((item, i) => (
                                             <div key={i} className="swiper-slide">
                                                 <div className="blog-card style1 wow fadeInUp" data-wow-delay="0.2s">
                                                     <div className="blog-thumb">

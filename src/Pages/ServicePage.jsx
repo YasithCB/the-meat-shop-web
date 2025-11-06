@@ -2,8 +2,14 @@ import BreadCumb from "../Components/Common/BreadCumb";
 import CtaBanner4 from "../Components/CtaBanner/CtaBanner4";
 import Gallery1 from "../Components/Gallery/Gallery1";
 import Service1 from "../Components/Service/Service1";
+import {useEffect} from "react";
+import {scrollToTop} from "../utils/util.js";
 
 const ServicePage = () => {
+    useEffect(() => {
+        scrollToTop();
+    })
+
     return (
         <div>
              <BreadCumb

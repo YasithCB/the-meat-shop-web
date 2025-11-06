@@ -1,8 +1,35 @@
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Flame } from "lucide-react";
+import {useContextElement} from "../../context/Context.jsx";
+import {useEffect, useState} from "react";
+import LoadingDots from "../Custom/loadingDots.jsx";
+import {getImageUrl} from "../../utils/util.js";
 
-const FoodItems1 = () => {
+const ProductsIconSlider = () => {
+    const { products, fetchProductsFromDB } = useContextElement();
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                // Delay to ensure context/user is ready
+                await new Promise((res) => setTimeout(res, 1500));
+                await fetchProductsFromDB();
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading || products.length === 0) {
+        return <LoadingDots />;
+    }
 
     const settings = {
         dots: false,
@@ -35,17 +62,6 @@ const FoodItems1 = () => {
         ]
       }; 
 
-      const foodItems = [
-        {img:'/assets/img/food-items/item1_1.png', title:'CHICKEN', content:'The registration fee', price:'7.99'},
-        {img:'/assets/img/food-items/item1_6.png', title:'GOAT MEAT | CHEVON', content:'The registration fee', price:'28.00'},
-        {img:'/assets/img/food-items/item1_2.png', title:'MUTTON', content:'The registration fee', price:'16.00'},
-        {img:'/assets/img/food-items/item1_3.png', title:'LAMB', content:'The registration fee', price:'24.99'},
-        {img:'/assets/img/food-items/item1_7.png', title:'BEEF', content:'The registration fee', price:'18.99'},
-        {img:'/assets/img/food-items/item1_4.png', title:'VEAL', content:'The registration fee', price:'28.99'},
-        {img:'/assets/img/food-items/item1_9.png', title:'CAMEL', content:'The registration fee', price:'23.99'},
-        {img:'/assets/img/food-items/item1_8.png', title:'HORSE', content:'The registration fee', price:'34.99'},
-      ];
-
     return (
         <section className="best-food-items-section fix section-padding bg-color2">
         <div className="best-food-wrapper">
@@ -67,17 +83,17 @@ const FoodItems1 = () => {
                     <div className="swiper bestFoodItems-slider">
                         <div className="swiper-wrapper cs_slider_gap_301 food-slider-item">
                         <Slider {...settings}>
-                        {foodItems.map((item, i) => (
+                        {products.map((item, i) => (
                             <div key={i} className="swiper-slide">
                                 <div className="single-food-items">
                                     <div className="item-thumb">
-                                        <img src={item.img} alt="thumb" />
+                                        <img src={getImageUrl(item.iconImg)} alt="thmb" />
                                         <div className="circle-shape"><img className="cir36"
-                                                src="/assets/img/food-items/circleShape.png" alt="shape" /></div>
+                                                                           src="/assets/img/food-items/circleShape.png" alt="shape" /></div>
                                     </div>
                                     <div className="item-content">
                                         <Link to="/menu">
-                                            <h3>{item.title}</h3>
+                                            <h3>{item.name}</h3>
                                         </Link>
                                         <div className="text">Price/KG</div>
                                         <h6>{item.price} AED</h6>
@@ -98,4 +114,4 @@ const FoodItems1 = () => {
     );
 };
 
-export default FoodItems1;
+export default ProductsIconSlider;

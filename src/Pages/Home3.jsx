@@ -5,7 +5,7 @@ import Brand1 from "../Components/Brand/Brand1";
 import Contact2 from "../Components/Contact/Contact2";
 import CtaBanner4 from "../Components/CtaBanner/CtaBanner4";
 import Faq1 from "../Components/Faq/Faq1";
-import FoodItem3 from "../Components/FoodItem/FoodItem3";
+import FoodItem3 from "../Components/ShopShowcase/FoodItem3";
 import HeroBanneer3 from "../Components/HeroBanner/HeroBanneer3";
 import Offer3 from "../Components/Offer/Offer3";
 import Process1 from "../Components/Process/Process1";
