@@ -128,21 +128,13 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                     <i className="bi bi-shop fs-3 mb-2 text-danger"></i>
                                     <h6 className="mb-0 text-uppercase fs-7">Supplier</h6>
                                 </div>
-
-                                <div
-                                    className={`role-box p-3 border rounded-3 ${role === "rider" ? "active" : ""}`}
-                                    onClick={() => setRole("rider")}
-                                >
-                                    <i className="bi bi-bicycle fs-3 mb-2 text-danger"></i>
-                                    <h6 className="mb-0 text-uppercase fs-7">Delivery Rider</h6>
-                                </div>
                             </div>
                         </div>
 
                         {/* Registration Form */}
-                        <form>
+                        <form className='container'>
                             <div className="row">
-                                <div className="mb-3 col-12">
+                                <div className="mb-3 col-12 col-lg">
                                     <input
                                         type="text"
                                         className="form-control"
@@ -152,7 +144,18 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                     />
                                 </div>
 
-                                <div className="mb-3 col-12">
+                                <div className="mb-3 col-12 col-lg">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Phone"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="mb-3 col-12 col-lg">
                                     <input
                                         type="email"
                                         className="form-control"
@@ -162,17 +165,7 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                     />
                                 </div>
 
-                                <div className="mb-3 col-12">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Phone"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                    />
-                                </div>
-
-                                <div className="mb-3 col-12">
+                                <div className="mb-3 col-12 col-lg">
                                     <input
                                         type="password"
                                         className="form-control"
@@ -181,43 +174,30 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
-
-                                {role === "supplier" && (
-                                    <div className="mb-3 col-12">
-                                        <label className="form-label">Upload Logo</label>
-                                        <input
-                                            type="file"
-                                            className="form-control"
-                                            accept="image/*"
-                                            onChange={(e) => setLogo(e.target.files[0])} // store the file object
-                                        />
-
-                                        {/* Preview */}
-                                        {logo && (
-                                            <div className="mt-2 text-center">
-                                                <img
-                                                    src={URL.createObjectURL(logo)}
-                                                    alt="Logo Preview"
-                                                    style={{ maxWidth: "150px", maxHeight: "150px", objectFit: "contain", borderRadius: "8px", border: "1px solid #ddd" }}
-                                                />
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-
-
-                                {role === "rider" && (
-                                    <div className="mb-3 col-12">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            placeholder="Vehicle Info"
-                                            value={vehicleInfo}
-                                            onChange={(e) => setVehicleInfo(e.target.value)}
-                                        />
-                                    </div>
-                                )}
                             </div>
+
+                            {role === "supplier" && (
+                                <div className="mb-3 col-12">
+                                    <label className="form-label">Upload Logo</label>
+                                    <input
+                                        type="file"
+                                        className="form-control"
+                                        accept="image/*"
+                                        onChange={(e) => setLogo(e.target.files[0])} // store the file object
+                                    />
+
+                                    {/* Preview */}
+                                    {logo && (
+                                        <div className="mt-2 text-center">
+                                            <img
+                                                src={URL.createObjectURL(logo)}
+                                                alt="Logo Preview"
+                                                style={{ maxWidth: "150px", maxHeight: "150px", objectFit: "contain", borderRadius: "8px", border: "1px solid #ddd" }}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </form>
                     </div>
 
@@ -225,7 +205,9 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                         <div className="text-center py-3">Loading...</div>
                     ) : (
                         <div className="modal-footer flex-column">
-                            <div className="mt-3 text-center">
+                            <span>Like to join as a delivery rider and earn? Join us — Download the app now!</span>
+
+                            <div className="mb-3 text-center">
                                 <span>Already have an account? </span>
                                 <a
                                     href="#"
@@ -240,7 +222,7 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                 </a>
                             </div>
 
-                            <div className="d-flex w-100 justify-content-center gap-2 mt-2">
+                            <div className="d-flex w-100 justify-content-center gap-2 my-2">
                                 <button
                                     type="button"
                                     className="btn btn-dark w-100"

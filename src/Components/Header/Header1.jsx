@@ -243,30 +243,22 @@ export default function Header1({ variant }) {
                                                   <i className="bi bi-shop fs-3 mb-2 text-danger"></i>
                                                   <h6 className="mb-0 text-uppercase fs-7">Supplier</h6>
                                               </div>
-
-                                              <div
-                                                  className={`role-box p-3 border rounded-3 ${role === "rider" ? "active" : ""}`}
-                                                  onClick={() => setRole("rider")}
-                                              >
-                                                  <i className="bi bi-bicycle fs-3 mb-2 text-danger"></i>
-                                                  <h6 className="mb-0 text-uppercase fs-7">Delivery Rider</h6>
-                                              </div>
                                           </div>
                                       </div>
 
                                       {/* Login Form */}
                                       <form>
-                                          <div className="row">
-                                              <div className="mb-3 col-12">
+                                          <div className="container row">
+                                              <div className="mb-3 col-12 col-lg">
                                                   <input
                                                       type="email"
                                                       className="form-control"
-                                                      placeholder="Enter email"
+                                                      placeholder="Email"
                                                       onChange={(e) => setEmail(e.target.value)}
                                                       value={email}
                                                   />
                                               </div>
-                                              <div className="mb-3 col-12">
+                                              <div className="mb-3 col-12 col-lg">
                                                   <input
                                                       type="password"
                                                       className="form-control"
@@ -283,7 +275,9 @@ export default function Header1({ variant }) {
                                       <LoadingDots/>
                                       :
                                       <div className="modal-footer flex-column">
-                                          <div className="mt-3 text-center">
+                                          <span>Like to join as a delivery rider and earn? Join us — Download the app now!</span>
+
+                                          <div className="mb-3 text-center">
                                               <span>Don’t have an account? </span>
                                               <a
                                                   href="#"
@@ -298,7 +292,7 @@ export default function Header1({ variant }) {
                                               </a>
                                           </div>
 
-                                          <div className="d-flex w-100 justify-content-center gap-2">
+                                          <div className="d-flex w-100 justify-content-center gap-2 mb-2">
                                               <button
                                                   type="button"
                                                   className="btn btn-dark w-100"
@@ -323,7 +317,7 @@ export default function Header1({ variant }) {
                   )}
 
                 <div className="main-button">
-                    <Link to="/contact" className="theme-btn" >ORDER NOW <i className="bi bi-arrow-right"></i></Link>
+                    <Link to="/menu2" className="theme-btn" >ORDER NOW <i className="bi bi-arrow-right"></i></Link>
                 </div>
 
 

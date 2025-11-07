@@ -51,7 +51,7 @@ const SuppliersSlider = () => {
                     </div>
                     <div className="dishes-card-wrap style1">
                         {suppliers.slice(0,5).map((item, i) => (
-                            <div key={i} className="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s">
+                            <div key={i} className="dishes-card supplier-card style1 wow fadeInUp" data-wow-delay="0.2s">
                                 <div className="dishes-thumb">
                                     <img src={getImageUrl(item.logo)} alt="thmb" />
                                 </div>

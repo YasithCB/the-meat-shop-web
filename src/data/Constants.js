@@ -20,7 +20,15 @@ export const EMAIL = {
     MARKETING: "marketing@themeatshop.com",
     FEEDBACK: "feedback@themeatshop.com",
 };
-
+export const EMIRATES_LIST = [
+    "Abu Dhabi",
+    "Dubai",
+    "Sharjah",
+    "Ajman",
+    "Umm Al Quwain",
+    "Ras Al Khaimah",
+    "Fujairah"
+];
 
 export const ABOUT_US_TITLE = 'Premium Quality Meat, Straight from the Farm to Your Table'
 export const ABOUT_US_DESCRIPTION = 'Experience premium quality meat in Abu Dhabi. From farm-fresh beef and lamb to poultry and specialty cuts, we bring you flavors that make every meal extraordinary.'

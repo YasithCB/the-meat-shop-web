@@ -8156,9 +8156,21 @@ input.main-search-input::placeholder {
   -o-transition: all 0.4s;
 }
 .dishes-card.style1 .dishes-thumb {
-  margin-bottom: 30px;
-  margin-top: 20px;
+    width: 100%;
+    height: 200px;             /* fixed image box height */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
+
+.supplier-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* ensures image fills box nicely */
+    object-position: center;
+    display: block;
+}
+
 .dishes-card.style1 h3 {
   color: var(--title);
   font-family: var(--title-font);

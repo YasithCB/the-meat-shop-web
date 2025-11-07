@@ -26,6 +26,8 @@
 
 /* LOGIN MODEL --------------------------------------------------------------------------- */
 .role-box {
+    display: flex;
+    flex-direction: column;
     width: 120px;
     cursor: pointer;
     background-color: #fff;
@@ -72,6 +74,16 @@
     color: var(--theme) !important;
     cursor: pointer;
 }
+
+.title {
+    color: var(--title);
+    font-family: var(--title-font);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 50px;
+    text-transform: capitalize;
+}
 /* FONT / TEXT --------------------------------------------------------------------------- */
 
 /* BTN / BUTTON --------------------------------------------------------------------------- */
@@ -83,3 +95,5 @@
 }
 
 /* BTN / BUTTON --------------------------------------------------------------------------- */
+
+

@@ -6,7 +6,7 @@ const CartPage = () => {
         <div>
              <BreadCumb
                 bgimg="/assets/img/bg/breadcumb.jpg"
-                Title="Cart"
+                Title="Confirm Checkout"
             ></BreadCumb>    
             <Cart></Cart>         
         </div>

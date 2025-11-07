@@ -1,166 +1,197 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import {getImageUrl, scrollToTop} from "../../utils/util.js";
+import {Star, StarOff , ShoppingCart } from "lucide-react";
+import {useEffect, useState} from "react";
+import ReviewForm from "../Custom/ReviewForm.jsx";
 
-const ShopDetails = () => {
+const ShopDetails = ({product}) => {
+    const supplier = product.supplier;
+    const reviewsList = product.reviews;
+
+    const [quantity, setQuantity] = useState(1);
+
+    const handleChange = (e) => {
+        const value = parseInt(e.target.value, 10);
+        if (!isNaN(value) && value >= 1 && value <= 100) {
+            setQuantity(value);
+        }
+    };
+
+    useEffect(() => {
+        scrollToTop();
+    })
+
     return (
         <div className="shop-details-section section-padding py-0 fix">
-        <div className="shop-details-wrapper style1">
-            <div className="container">
-                <div className="shop-details bg-white">
-                    <div className="container">
-                        <div className="row gx-60">
-                            <div className="col-lg-6">
-                                <div className="product-big-img bg-color2">
-                                    <div className="dishes-thumb">
-                                        <img src="/assets/img/dishes/dishes3_1.png" alt="thumb" />
-                                        <div className="circle-shape d-none d-md-block"><img className="cir36"
-                                                src="/assets/img/food-items/circleShape2.png" alt="shape" /></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="product-about">
-                                    <div className="title-wrapper">
-                                        <h2 className="product-title">Chicken Pizza</h2>
-                                        <div className="price">$69</div>
-                                    </div>
-
-                                    <div className="product-rating">
-                                        <div className="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span
-                                                >Rated <strong className="rating">5.00</strong> out of 5
-                                                based on <span className="rating">1</span> customer rating</span></div>
-                                        <a href="shop-details.html" className="woocommerce-review-link">(<span
-                                                className="count">2</span> customer reviews)</a>
-                                    </div>
-                                    <p className="text">Aliquam hendrerit a augue insuscipit. Etiam aliquam massa quis des
-                                        mauris commodo venenatis ligula commodo leez sed blandit convallis dignissim
-                                        onec vel pellentesque neque.</p>
-
-                                    <div className="actions">
-                                        <div className="quantity">
-                                            <p>Quantity</p>
-
-                                            <div className="qty-wrapper">
-                                                <input type="number" className="qty-input" step="1" min="1" max="100"
-                                                    name="quantity" value="1" title="Qty" />
-                                                <button className="quantity-plus qty-btn"><i className="bi bi-plus-lg"></i></button>
-                                                <button className="quantity-minus qty-btn"><i className="bi bi-dash-lg"></i></button>
+            <div className="shop-details-wrapper style1">
+                <div className="container">
+                    <div className="shop-details bg-white">
+                        <div className="container">
+                            <div className="row gx-60">
+                                <div className="col-lg-6">
+                                    <div className="product-big-img">
+                                        <div className="dishes-thumb">
+                                            <img src={getImageUrl(product.img)} alt="thmb" height={200}/>
+                                            <div className="circle-shape d-none d-md-block">
+                                                <img className="cir36"
+                                                     src="/assets/img/food-items/circleShape2.png"
+                                                     alt="shape"
+                                                     height={250}
+                                                />
                                             </div>
                                         </div>
-                                        <Link to="/shop/cart" className="theme-btn cart-btn0">Add to Cart <i className="bi bi-basket3-fill bg-transparent text-white"></i></Link>
-                                        <Link to="/shop/wishlist" className="theme-btn style5 border-0">ADD TO wishlist<i className="bi bi-heart-fill"></i></Link>
-                                    </div>
-                                    <div className="share">
-                                        <h6>share with friends</h6>
-                                        <ul className="social-media">
-                                            <li> <a href="https://www.facebook.com"> <i className="bi bi-facebook"></i> </a> </li>
-                                            <li> <a href="https://www.youtube.com"><i className="bi bi-youtube"></i>
-                                                </a> </li>
-                                            <li> <a href="https://www.x.com"> <i className="bi bi-twitter-x"></i> </a>
-                                            </li>
-                                            <li> <a href="https://www.linkedin.com"> <i className="bi bi-linkedin"></i> </a> </li>
-                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="product-description">
-                                    <h3>product Description</h3>
-                                    <div className="desc">
-                                        <p>Neque porro est qui dolorem ipsum quia quaed inventor veritatis et quasi
-                                            architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim
-                                            var sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is
-                                            simply dummy text of the printing and typesetting industry.
-                                        </p> <br/>
-                                        <p>When an unknown printer took a galley of type and scrambled it to make a type
-                                            specimen book. It has survived not only five centuries, but also the leap
-                                            into electronic typesetting, remaining essentially unchanged. Aelltes port
-                                            lacus quis enim var sed efficitur turpis gilla sed sit
-                                            amet finibus eros. Neque porro est qui dolorem ipsum quia quaed inventor
-                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes
-                                            port lacus quis enim var sed efficitur turpis gilla sed sit amet finibus
-                                            eros. Lorem Ipsum is simply dummy text of the printing and typesetting
-                                            industry.</p>
-                                    </div>
-                                </div>
-                                <div className="product-review">
-                                    <h3>02 Reviews</h3>
-                                    <ul className="comment-list">
-                                        <li className="review comment-item">
-                                            <div className="post-comment">
-                                                <div className="comment-avater">
-                                                    <img src="/assets/img/blog/comment-author1.png" alt="Comment Author" />
-                                                </div>
-                                                <div className="comment-content">
-                                                    <h4 className="name">Masirul Islam</h4>
-                                                    <div className="commented-on">March 20, 2024 at 2:37 pm </div>
-                                                    <div className="star"><img src="/assets/img/icon/star3.svg" alt="icon" /> 
-                                                    </div>
-                                                    <p className="text">Neque porro est qui dolorem ipsum quia quaed
-                                                        inventor veritatis et quasi architecto beatae vitae dicta sunt
-                                                        explicabo. Aelltes port lacus quis enim var sed efficitur turpis
-                                                        gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy</p>
-                                                </div>
+                                <div className="col-lg-6">
+                                    <div className="product-about">
+                                        <div className="title-wrapper">
+                                            <h2 className="product-title">{product.name}</h2>
+                                            <div className="price">{product.price} AED</div>
+                                        </div>
+
+                                        <div className="product-rating">
+                                            <div className="star-rating" role="img"
+                                                 aria-label="Rated 5.00 out of 5">
+                                                <span>Rated <strong className="rating">5.00</strong>
+                                                    out of 5 based on
+                                                <span className="rating">1</span> customer rating</span>
                                             </div>
-                                        </li>
-                                        <li className="review comment-item">
-                                            <div className="post-comment">
-                                                <div className="comment-avater">
-                                                    <img src="/assets/img/blog/comment-author2.png" alt="Comment Author" />
+
+                                            <a href="shop-details.html" className="woocommerce-review-link">
+                                                (<span className="count">2</span> customer reviews)
+                                            </a>
+                                        </div>
+
+                                        <p className="text">
+                                            {product.subtitle}
+                                        </p>
+
+                                        <div className="actions">
+
+                                            <div className="quantity">
+                                                <p>Quantity</p>
+
+                                                <div className="qty-wrapper d-flex align-items-center gap-2">
+                                                    <input
+                                                        type="number"
+                                                        className="qty-input form-control text-center"
+                                                        step="1"
+                                                        min="1"
+                                                        max="100"
+                                                        name="quantity"
+                                                        value={quantity}
+                                                        onChange={handleChange}
+                                                        style={{ width: "70px" }}
+                                                    />
                                                 </div>
-                                                <div className="comment-content">
-                                                    <h4 className="name">Daniel Adam</h4>
-                                                    <div className="commented-on">March 30, 2024 at 2:37 pm </div>
-                                                    <div className="star"><img src="/assets/img/icon/star3.svg" alt="icon" />
-                                                    </div>
-                                                    <p className="text">Neque porro est qui dolorem ipsum quia quaed
-                                                        inventor veritatis et quasi architecto beatae vitae dicta sunt
-                                                        explicabo. Aelltes port lacus quis enim var sed efficitur turpis
-                                                        gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy</p>
-                                                </div>
+                                                <p className='text-black-50 fs-7'>{product.stock}KG Available</p>
+
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="comment-form">
-                                    <div className="form-title">
-                                        <h3 className="inner-title">Add a Review</h3>
-                                        <p>Your email address will not be published. Required fields are marked *</p>
-                                        <div className="rating">
-                                            <p>Rate this product? *</p>
-                                            <ul className="star">
-                                                <li><i className="bi bi-star"></i></li>
-                                                <li><i className="bi bi-star"></i></li>
-                                                <li><i className="bi bi-star"></i></li>
-                                                <li><i className="bi bi-star"></i></li>
-                                                <li><i className="bi bi-star"></i></li>
+
+                                            <Link to="/shop/checkout"
+                                                  state={{product: product, quantity : quantity}}
+                                                  className="theme-btn cart-btn0 text-uppercase"
+                                            >
+                                                Order Now
+                                                <ShoppingCart className='mb-1 ms-2' />
+                                            </Link>
+                                        </div>
+
+                                        <div className="share">
+                                            <h6>share with friends</h6>
+                                            <ul className="social-media">
+                                                <li><a href="https://www.facebook.com"> <i
+                                                    className="bi bi-facebook"></i> </a></li>
+                                                <li><a href="https://www.youtube.com"><i className="bi bi-youtube"></i>
+                                                </a></li>
+                                                <li><a href="https://www.x.com"> <i className="bi bi-twitter-x"></i>
+                                                </a>
+                                                </li>
+                                                <li><a href="https://www.linkedin.com"> <i
+                                                    className="bi bi-linkedin"></i> </a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="col-md-6 form-group style-white2">
-                                            <input type="text" placeholder="Your Name" className="form-control" />
-                                            <i className="bi bi-person text-title"></i>
-                                        </div>
-                                        <div className="col-md-6 form-group style-white2">
-                                            <input type="text" placeholder="Your Email" className="form-control" />
-                                            <i className="text-title bi bi-envelope"></i>
-                                        </div>
-                                        <div className="col-12 form-group style-white2">
-                                            <textarea placeholder="Write a Message" className="form-control" rows="5"></textarea>
-                                            <i className="text-title bi bi-pencil"></i>
-                                        </div>
-
-                                        <div className="col-12 form-group">
-                                            <input id="reviewcheck" name="reviewcheck" type="checkbox" />
-                                            <label htmlFor="reviewcheck">Save my name, email, and website in this browser
-                                                for the next time I comment.<span className="checkmark"></span></label>
-                                        </div>
-                                        <div className="col-12 form-group mb-0">
-                                            <button className="theme-btn">Post A Comment <i className="bi bi-arrow-right bg-transparent text-white"></i></button>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="product-description">
+                                        <h3>product Description</h3>
+                                        <div className="desc">
+                                            <p>
+                                                {product.description}
+                                            </p>
                                         </div>
                                     </div>
+
+
+                                    <div className='row d-flex gap-5'>
+                                        {/* SUPPLIER */}
+                                        <div className='col-12 col-lg'>
+                                            <h3 className='title'>Supplier</h3>
+                                            <div className="d-flex gap-4 my-5">
+                                                {/* Supplier Logo */}
+                                                <img
+                                                    src={getImageUrl(supplier.logo)}
+                                                    alt={supplier.name}
+                                                    className="border border-gray-200"
+                                                    height="200px"
+                                                />
+
+                                                {/* Supplier Info */}
+                                                <div className="flex-1 py-3">
+                                                    <h3 className="text-lg font-semibold text-gray-800 text-uppercase mb-3">{supplier.name}</h3>
+                                                    <p className="text-sm text-gray-500">{supplier.email}</p>
+                                                    <p className="text-sm text-gray-500">{supplier.phone}</p>
+                                                    <p className="text-xs text-gray-400">
+                                                        Joined: {new Date(supplier.created_at).toLocaleDateString()}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* REVIEWS / COMMENTS */}
+                                        <div className="product-review col-12 col-lg">
+                                            <h3>{reviewsList.length} Reviews</h3>
+                                            <ul className="comment-list">
+                                                {reviewsList.map((review) => (
+                                                    <li key={review.id} className="review comment-item">
+                                                        <div className="post-comment">
+
+                                                            {/* Content */}
+                                                            <div className="comment-content">
+                                                                <h4 className="name">{review.user_name}</h4>
+                                                                <div className="commented-on">
+                                                                    {new Date(review.created_at).toLocaleString()}
+                                                                </div>
+
+                                                                {/* Star rating */}
+                                                                <div className="star d-flex">
+                                                                    {Array.from({length: 5}).map((_, i) => (
+                                                                        <span key={i} className="me-1">
+                                                                          {i < review.rating ? (
+                                                                              <Star size={16} color="#FFC107"/>   // filled star
+                                                                          ) : (
+                                                                              <StarOff size={16} color="#E0E0E0"/> // empty star
+                                                                          )}
+                                                                        </span>
+                                                                    ))}
+                                                                </div>
+
+
+                                                                {/* Comment text */}
+                                                                <p className="text">{review.comment}</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    {/* ADD REVIEW */}
+                                    <ReviewForm productId={product.id}/>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +199,6 @@ const ShopDetails = () => {
                 </div>
             </div>
         </div>
-    </div>
     );
 };
 

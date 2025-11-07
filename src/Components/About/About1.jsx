@@ -13,7 +13,7 @@ const About1 = () => {
         title: 'Premium Quality Meat, Straight from the Farm to Your Table',
         content: 'Experience premium quality meat in Abu Dhabi. From farm-fresh beef and lamb to poultry and specialty cuts, we bring you flavors that make every meal extraordinary.',
         btnName: 'ORDER NOW',
-        btnUrl: '/menu',
+        btnUrl: '/menu2',
     }
 
     return (
@@ -46,8 +46,10 @@ const About1 = () => {
                                     <div className="text wow fadeInUp"
                                          data-wow-delay="0.8s">{ABOUT_US_DESCRIPTION}</div>
                                     <div className="btn-wrapper wow fadeInUp" data-wow-delay="0.9s">
-                                        <Link className="theme-btn" to={aboutContent.btnUrl}>{aboutContent.btnName} <i
-                                            className="bi bi-arrow-right"></i></Link>
+                                        <Link className="theme-btn" to={aboutContent.btnUrl}>
+                                            {aboutContent.btnName}
+                                            <i className="bi bi-arrow-right"></i>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
