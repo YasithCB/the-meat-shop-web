@@ -51,6 +51,14 @@ export const MEAT_DETAILS = [
     {img: '/assets/img/menu/menuThumb1_10.png', title: 'BUFFALO', content: 'Limited stock! Grab your favorite meat now!', price: '19.99'},
 ];
 
+export const ICON_FOR_CATEGORY = {
+    1: "/assets/img/food-items/item1_1.png",
+    2: "/assets/img/food-items/item1_2.png",
+    3: "/assets/img/food-items/item1_3.png",
+    4: "/assets/img/food-items/item1_4.png",
+    5: "/assets/img/food-items/item1_5.png",
+};
+
 export const SERVICE_DETAILS = [
     { icon: Beef, title: "Premium Fresh Cuts", content: "Hand-selected, high-quality meats prepared fresh daily for the best taste and texture." },
     { icon: Truck, title: "Fast Delivery", content: "Get your fresh meat delivered to your doorstep quickly and safely in temperature-controlled packaging." },

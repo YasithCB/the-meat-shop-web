@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
-import Slider from "react-slick";
 import { Flame } from "lucide-react";
-import {useContextElement} from "../../context/Context.jsx";
 import {useEffect, useState} from "react";
 import LoadingDots from "../Custom/loadingDots.jsx";
-import {getImageUrl} from "../../utils/util.js";
+import {getAllCategories} from "../../api/categoryAPI.js";
+import {ICON_FOR_CATEGORY} from "../../data/Constants.js";
 
 const ProductsIconSlider = () => {
-    const { products, fetchProductsFromDB } = useContextElement();
     const [loading, setLoading] = useState(false);
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // Delay to ensure context/user is ready
-                await new Promise((res) => setTimeout(res, 1500));
-                await fetchProductsFromDB();
+                const resp = await getAllCategories();
+                console.log('categories')
+                console.log(resp)
+                setCategories(resp.data)
             } catch (err) {
                 console.error(err);
             } finally {
@@ -27,40 +27,13 @@ const ProductsIconSlider = () => {
         fetchData();
     }, []);
 
-    if (loading || products.length === 0) {
+    const getImage = (id) => {
+        return ICON_FOR_CATEGORY[id] || "/icons/default.png";
+    };
+
+    if (loading || categories.length === 0) {
         return <LoadingDots />;
     }
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 2000,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows: false,
-        swipeToSlide: true,
-        autoplay: true,
-        autoplaySpeed: 4000,        
-        responsive: [
-          {
-            breakpoint: 1399,
-            settings: {
-              slidesToShow: 4,
-            }
-          },
-          {
-            breakpoint: 1199,
-            settings: {
-              slidesToShow: 2,
-            }
-          },{
-            breakpoint: 575,
-            settings: {
-              slidesToShow: 1,
-            }
-          }
-        ]
-      }; 
 
     return (
         <section className="best-food-items-section fix section-padding bg-color2">
@@ -76,33 +49,28 @@ const ProductsIconSlider = () => {
                         <p className='pt-1'>Fresh & Premium Cuts</p>
                     </div>
                     <h2 className="title wow fadeInUp " data-wow-delay="0.7s">
-                        EXPLORE VARIETIES
+                        EXPLORE CATEGORIES
                     </h2>
                 </div>
                 <div className="slider-area mb-n40">
                     <div className="swiper bestFoodItems-slider">
-                        <div className="swiper-wrapper cs_slider_gap_301 food-slider-item">
-                        <Slider {...settings}>
-                        {products.map((item, i) => (
-                            <div key={i} className="swiper-slide">
-                                <div className="single-food-items">
-                                    <div className="item-thumb">
-                                        <img src={getImageUrl(item.iconImg)} alt="thmb" />
-                                        <div className="circle-shape"><img className="cir36"
-                                                                           src="/assets/img/food-items/circleShape.png" alt="shape" /></div>
-                                    </div>
-                                    <div className="item-content">
-                                        <Link to="/menu">
+                        <div className="swiper-wrapper d-flex gap-3 cs_slider_gap_301 food-slider-item">
+                            {categories.map((item, i) => (
+                                <div key={i} className="swiper-slide col">
+                                    <div className="single-food-items">
+                                        <div className="item-thumb">
+                                            <img src={getImage(item.id)} alt="thmb" />
+                                            <div className="circle-shape">
+                                                <img className="cir36" src="/assets/img/food-items/circleShape.png" alt="shape" />
+                                            </div>
+                                        </div>
+                                        <div className="item-content">
                                             <h3>{item.name}</h3>
-                                        </Link>
-                                        <div className="text">Price/KG</div>
-                                        <h6>{item.price} AED</h6>
+                                            <Link to="/shop/category" state={{categoryId : item.id, categoryName: item.name}} className="theme-btn style6"> Shop Now </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             ))}
-                            </Slider>
-                           
                         </div>
                     </div>
 

@@ -5,9 +5,10 @@ const ShopCard = ({product}) => {
     return (
         <div className="dishes-card style2 wow fadeInUp" data-wow-delay="0.2s">
         <div className="dishes-thumb">
-            <img src={getImageUrl(product.img)} alt="thmb"/>
-            <div className="circle-shape"><img className="cir36"
-                    src="/assets/img/food-items/circleShape.png" alt="shape" /></div>
+            <img src={getImageUrl(product.img)} style={{ height: 150 }} alt="thmb"/>
+            <div className="circle-shape">
+                <img className="cir36" src="/assets/img/food-items/circleShape.png" alt="shape" />
+            </div>
         </div>
         <div className="dishes-content pt-2">
             <Link to="/shop/shop-details">

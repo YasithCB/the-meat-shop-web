@@ -34,6 +34,7 @@ import CartPage from "../Pages/CartPage";
 import CheckoutPage from "../Pages/CheckoutPage";
 import WishlistPage from "../Pages/WishlistPage";
 import PaymentPage from "../Pages/PaymentPage.jsx";
+import ShopSubCategoriesPage from "../Pages/ShopSubCategoriesPage.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -71,7 +72,11 @@ export const router = createBrowserRouter([
         {
           path: "/menu2",
           element: <MenuPage2></MenuPage2>,
-        },  
+        },
+        {
+          path: "/shop/category",
+          element: <ShopSubCategoriesPage></ShopSubCategoriesPage>,
+        },
         {
           path: "/gallery",
           element: <GalleryPage></GalleryPage>,

@@ -3,19 +3,39 @@ import {Flame} from "lucide-react";
 import {useContextElement} from "../../context/Context.jsx";
 import LoadingDots from "../Custom/loadingDots.jsx";
 import {getImageUrl} from "../../utils/util.js";
+import {useEffect, useState} from "react";
 
 const BestSelling1 = () => {
-    const { products } = useContextElement();
+    const [loading, setLoading] = useState(false);
+    const { products, fetchProductsFromDB } = useContextElement();
 
-    if (products.length === 0) return <LoadingDots />
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                await fetchProductsFromDB();
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (products.length === 0 || loading) return <LoadingDots />
 
     return (
         <section className="popular-dishes-section fix section-padding">
         <div className="popular-dishes-wrapper style1">
-            <div className="shape1 d-none d-xxl-block"><img src="/assets/img/shape/popularDishesShape1_1.png" alt="shape" />
+            <div className="shape1 d-none d-xxl-block">
+                <img src="/assets/img/shape/popularDishesShape1_1.png" alt="shape" />
             </div>
-            <div className="shape2 float-bob-y d-none d-xxl-block"><img src="/assets/img/shape/popularDishesShape1_2.png"
-                    alt="shape" /></div>
+            <div className="shape2 float-bob-y d-none d-xxl-block">
+                <img src="/assets/img/shape/popularDishesShape1_2.png" alt="shape" />
+            </div>
+
             <div className="container">
                 <div className="title-area">
                     <div

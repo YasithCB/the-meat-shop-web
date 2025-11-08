@@ -1,22 +1,21 @@
-import {Link} from "react-router-dom";
-import ShopCard from "../Card/ShopCard.jsx";
 import {Flame} from "lucide-react";
-import {useContextElement} from "../../context/Context.jsx";
+import { Link } from "react-router-dom";
 import {useEffect, useState} from "react";
 import LoadingDots from "../Custom/loadingDots.jsx";
-import {getImageUrl} from "../../utils/util.js";
+import {getAllCategories} from "../../api/categoryAPI.js";
+import {ICON_FOR_CATEGORY} from "../../data/Constants.js";
 
 const BestSelling4 = () => {
-    const {products, fetchProductsFromDB} = useContextElement();
     const [loading, setLoading] = useState(false);
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // Delay to ensure context/user is ready
-                await new Promise((res) => setTimeout(res, 1500));
-                await fetchProductsFromDB();
+                // fetch categories
+                const resp = await getAllCategories();
+                setCategories(resp.data)
             } catch (err) {
                 console.error(err);
             } finally {
@@ -27,15 +26,19 @@ const BestSelling4 = () => {
         fetchData();
     }, []);
 
-    if (loading || products.length === 0) {
+    const getImage = (id) => {
+        return ICON_FOR_CATEGORY[id] || "/icons/default.png";
+    };
+
+    if (loading || categories.length === 0) {
         return <LoadingDots/>;
     }
 
     return (
         <section className="popular-dishes-section fix section-padding">
             <div className="popular-dishes-wrapper style1">
-                <div className="shape1 d-none d-xxl-block"><img src="/assets/img/shape/popularDishesShape1_1.png"
-                                                                alt="shape"/>
+                <div className="shape1 d-none d-xxl-block">
+                    <img src="/assets/img/shape/popularDishesShape1_1.png" alt="shape"/>
                 </div>
                 <div className="shape2 float-bob-y d-none d-xxl-block">
                     <img src="/assets/img/shape/popularDishesShape1_2.png" alt="shape"/>
@@ -47,60 +50,37 @@ const BestSelling4 = () => {
                             className="sub-title text-center text-danger wow fadeInUp d-flex flex-row justify-content-center align-items-center"
                             data-wow-delay="0.5s">
                             <Flame className="me-2 text-danger" size={22}/>
-                            <p className='pt-1'>SPECIAL OFFERS</p>
+                            <p className='pt-1'>EXPLORE</p>
                         </div>
                         <h2 className="title wow fadeInUp " data-wow-delay="0.7s">
-                            BEST DEALS
+                            MAIN CATEGORIES
                         </h2>
                     </div>
                     <div className="dishes-card-wrap style1 best-selling-area d-flex">
-                        {products.slice(0, 4).map((item, i) => (
-                            <Link key={i} to="/shop/shop-details">
-                                <div className="dishes-card style1 wow fadeInUp col" data-wow-delay="0.2s">
+                        {categories.map((item, i) => (
+                            <Link
+                                to='/shop/category'
+                                state={{categoryName : item.name, categoryId : item.id}}
+                                key={i}
+                            >
+                                <div
+                                    key={i}
+                                    className="dishes-card style1 wow fadeInUp col-12 col-lg cs-pointer"
+                                    data-wow-delay="0.2s"
+                                >
                                     <div className="dishes-thumb">
-                                        <img src={getImageUrl(item.img)} alt="thmb"/>
+                                        <img src={getImage(item.id)} alt="thmb" />
                                     </div>
                                     <h3>{item.name}</h3>
 
                                     <p>{item.subtitle}</p>
-                                    <h6>{item.price} AED</h6>
-                                    <div className="social-profile">
-                                <span className="plus-btn">
-                                    <Link href="#">
-                                        <Flame/>
-                                    </Link></span>
-                                        <ul>
-                                            <li><Link to="/cart"><i className="bi bi-basket2"></i></Link></li>
-                                        </ul>
-                                    </div>
+                                    <div className="social-profile"></div>
                                 </div>
                             </Link>
-
                         ))}
                     </div>
                 </div>
 
-                <div className="container mt-5">
-                    <div className="title-area">
-                        <div
-                            className="sub-title text-center text-danger wow fadeInUp d-flex flex-row justify-content-center align-items-center"
-                            data-wow-delay="0.5s">
-                            <Flame className="me-2 text-danger" size={22}/>
-                            <p className='pt-1'>FRESH & PREMIUM CUTS</p>
-                        </div>
-                        <h2 className="title wow fadeInUp " data-wow-delay="0.7s">
-                            SHOP
-                        </h2>
-                    </div>
-                    <div className="dishes-card-wrap style1 best-selling-area">
-                        {products.map((item, i) => (
-                            <ShopCard
-                                key={i}
-                                product={item}
-                            ></ShopCard>
-                        ))}
-                    </div>
-                </div>
             </div>
 
         </section>
