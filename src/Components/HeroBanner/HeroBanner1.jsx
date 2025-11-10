@@ -36,7 +36,7 @@ const HeroBanner1 = () => {
 
     const heroContent = [
         {img:'/assets/img/banner/bannerThumb1_1.png', subtitle:'WELCOME THE MEAT SHOP', title:'FRESH, SAFE, QUALITY MEATS', btnname:'ORDER NOW'},
-        {img:'/assets/img/banner/bannerThumb1_2.png', subtitle:'WELCOME THE MEAT SHOP', title:'SUPPLYING ALL OVER UAE', btnname:'ORDER NOW'},
+        {img:'/assets/img/banner/bannerThumb1_2.png', subtitle:'WELCOME THE MEAT SHOP', title:'Supplying all over UAE reliably', btnname:'ORDER NOW'},
         {img:'/assets/img/banner/bannerThumb1_3.png', subtitle:'WELCOME THE MEAT SHOP', title:'ALL KIND OF MEATS YOU NEED', btnname:'ORDER NOW'},
       ]; 
 

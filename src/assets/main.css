@@ -8143,6 +8143,10 @@ input.main-search-input::placeholder {
 }
 
 .dishes-card.style1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
   position: relative;
   padding: 25px;
   border-radius: 16px;
@@ -8212,10 +8216,12 @@ input.main-search-input::placeholder {
 .dishes-card.style1:hover h3 {
   color: var(--white);
 }
-.dishes-card.style1:hover p {
+.dishes-card.style1:hover span {
   color: var(--white);
 }
 .dishes-card.style1:hover h6 {
+  color: var(--white);
+}.dishes-card.style1:hover p {
   color: var(--white);
 }
 .dishes-card.style1:hover .social-profile ul {

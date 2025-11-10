@@ -1,12 +1,16 @@
 export const getImageUrl = (path) => {
     if (!path) return `${import.meta.env.VITE_API_BASE_URL}/uploads/default-image.png`;
 
+    // If it's a blob URL, return it directly
+    if (path.startsWith("blob:")) return path;
+
     // Normalize path
     let cleanPath = path.replace(/\\/g, "/"); // convert backslashes
     if (cleanPath.startsWith("/")) cleanPath = cleanPath.slice(1); // remove leading slash
 
     return `${import.meta.env.VITE_API_BASE_URL}/${cleanPath}`;
 };
+
 
 // utils/date.js
 export const formatDate = (dateString) => {

@@ -68,6 +68,10 @@
 /* FONT / TEXT --------------------------------------------------------------------------- */
 .fs-7 {
     font-size: 0.85rem;
+}.fs-8 {
+     font-size: 0.8rem;
+}.fs-9 {
+     font-size: 0.75rem;
 }
 
 .text-hover-red:hover {
@@ -93,9 +97,88 @@
 }.btn-red:hover {
     background-color: var(--theme-hover) !important;
 }
-
-/* BTN / BUTTON --------------------------------------------------------------------------- */
-
+.btn-black {
+    background-color: #121212 !important;
+    color: white !important;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}.btn-black:hover {
+     background-color: black !important;
+ }
 .cs-pointer {
     cursor: pointer !important;
 }
+
+.hover-white:hover {
+    color: white !important;
+}
+.hover-shine {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%) rotate(-45deg);
+        z-index: 1;
+        transition: all 0.6s ease;
+    }
+
+    &:hover {
+        background-color: transparent;
+
+        &::after {
+            height: 350%;
+            background-color: transparent;
+        }
+    }
+
+    &:not(:hover) {
+        &::after {
+            transition: none;
+        }
+    }
+}
+/* BTN / BUTTON --------------------------------------------------------------------------- */
+
+/* PRODUCT CARD --------------------------------------------------------------------------- */
+.single-food-items {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.item-thumb {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* center it horizontally */
+    position: relative;
+}
+.item-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+/* PRODUCT CARD --------------------------------------------------------------------------- */
+
+/* ROOT --------------------------------------------------------------------------- */
+a {
+    text-decoration: none !important;
+    color: white !important;
+}
+/* ROOT --------------------------------------------------------------------------- */
+
+
+
+
+

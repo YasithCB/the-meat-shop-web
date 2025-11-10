@@ -56,7 +56,6 @@ const Checkout = ({product, quantity}) => {
     // Handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Billing Form Data:", formData);
         // You can send this to API here
     };
 

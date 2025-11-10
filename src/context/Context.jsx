@@ -9,6 +9,7 @@ export default function Context({children}) {
     // 👤 AUTH STATE
     const [currentUser, setCurrentUser] = useState(null);
     const [authToken, setAuthToken] = useState(null);
+    const [currentRole, setCurrentRole] = useState('customer');
 
     const [products, setProducts] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
@@ -46,22 +47,26 @@ export default function Context({children}) {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         const token = localStorage.getItem("auth_token");
-        if (user && token) {
+        const role = localStorage.getItem("role");
+        if (user && token && role) {
             setCurrentUser(user);
             setAuthToken(token);
+            setCurrentRole(role);
         }
     }, []);
 
     // 🧠 AUTH — update localStorage when auth changes
     useEffect(() => {
-        if (currentUser && authToken) {
+        if (currentUser && authToken && currentRole) {
             localStorage.setItem("user", JSON.stringify(currentUser));
             localStorage.setItem("auth_token", authToken.toString());
+            localStorage.setItem("role", currentRole.toString());
         } else {
             localStorage.removeItem("user");
             localStorage.removeItem("auth_token");
+            localStorage.removeItem("role");
         }
-    }, [currentUser, authToken]);
+    }, [currentUser, authToken, currentRole]);
 
     const logout = () => {
         setCurrentUser(null);
@@ -85,6 +90,8 @@ export default function Context({children}) {
         setCurrentUser,
         authToken,
         setAuthToken,
+        currentRole,
+        setCurrentRole,
         logout,
     };
 

@@ -14,8 +14,6 @@ const ProductsIconSlider = () => {
             setLoading(true);
             try {
                 const resp = await getAllCategories();
-                console.log('categories')
-                console.log(resp)
                 setCategories(resp.data)
             } catch (err) {
                 console.error(err);
@@ -52,30 +50,29 @@ const ProductsIconSlider = () => {
                         EXPLORE CATEGORIES
                     </h2>
                 </div>
-                <div className="slider-area mb-n40">
-                    <div className="swiper bestFoodItems-slider">
-                        <div className="swiper-wrapper d-flex gap-3 cs_slider_gap_301 food-slider-item">
-                            {categories.map((item, i) => (
-                                <div key={i} className="swiper-slide col">
-                                    <div className="single-food-items">
-                                        <div className="item-thumb">
-                                            <img src={getImage(item.id)} alt="thmb" />
-                                            <div className="circle-shape">
-                                                <img className="cir36" src="/assets/img/food-items/circleShape.png" alt="shape" />
-                                            </div>
-                                        </div>
-                                        <div className="item-content">
-                                            <h3>{item.name}</h3>
-                                            <Link to="/shop/category" state={{categoryId : item.id, categoryName: item.name}} className="theme-btn style6"> Shop Now </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+            </div>
+
+            <div className="dishes-card-wrap style1 best-selling-area mx-5 px-lg-5">
+                {categories.map((category, i) => (
+                    <div key={i} className="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s">
+                        <div className="dishes-thumb">
+                            <div className='item-thumb'>
+                                <img src={getImage(category.id)} className='item-thumb-img' alt="thmb"/>
+                            </div>
+                            <div className="circle-shape">
+                                <img className="cir36" src="/assets/img/food-items/circleShape.png" alt="shape" />
+                            </div>
+                        </div>
+                        <div className="dishes-content pt-2">
+                            <Link to="/shop/category">
+                                <h3>{category.name}</h3>
+                            </Link>
+                            <Link to="/shop/category" state={{ categoryName: category.name, categoryId: category.id }} className="theme-btn style6">
+                                <span>Shop Now</span>
+                            </Link>
                         </div>
                     </div>
-
-                    <div className="bestFoodItems-pagination"></div>
-                </div>
+                ))}
             </div>
         </div>
     </section>

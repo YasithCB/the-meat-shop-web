@@ -3,6 +3,7 @@ import BreadCumb from "../Components/Common/BreadCumb";
 import Testimonial2 from "../Components/Testimonial/Testimonial2";
 import {useEffect} from "react";
 import {scrollToTop} from "../utils/util.js";
+import CtaBanner4 from "../Components/CtaBanner/CtaBanner4.jsx";
 
 const MenuPage2 = () => {
     useEffect(() => {
@@ -14,9 +15,9 @@ const MenuPage2 = () => {
              <BreadCumb
                 bgimg="/assets/img/bg/breadcumb.jpg"
                 Title="Shop"
-            ></BreadCumb>  
-            <BestSelling4></BestSelling4>   
-            <Testimonial2></Testimonial2>
+            ></BreadCumb>
+            <BestSelling4></BestSelling4>
+            <CtaBanner4></CtaBanner4>
         </div>
     );
 };

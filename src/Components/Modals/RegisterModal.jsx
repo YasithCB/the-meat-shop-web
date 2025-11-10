@@ -9,6 +9,7 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [logo, setLogo] = useState(null); // for suppliers
     const [vehicleInfo, setVehicleInfo] = useState(""); // for riders
     const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
         if (!email.trim() || !validateEmail(email)) return toast.error("Valid email is required");
         if (!phone.trim() || !validatePhone(phone)) return toast.error("Valid phone number is required");
         if (!password.trim() || !validatePassword(password)) return toast.error("Password must be at least 6 characters");
+        if (confirmPassword.trim() !== password.trim()) return toast.error("Password doesn't Match");
 
         if (!logo && role === "supplier") {
             return toast.error("Logo is required for suppliers");
@@ -57,8 +59,6 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
             }
 
             res = await signup(formData, role);
-
-            console.log(`Registering as Dealer response : ${res}`)
 
             if (res.success) {
                 // show message instead of auto-login
@@ -128,6 +128,14 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                     <i className="bi bi-shop fs-3 mb-2 text-danger"></i>
                                     <h6 className="mb-0 text-uppercase fs-7">Supplier</h6>
                                 </div>
+
+                                <div
+                                    className={`role-box p-3 border rounded-3 ${role === "rider" ? "active" : ""}`}
+                                    onClick={() => setRole("rider")}
+                                >
+                                    <i className="bi bi-scooter fs-3 mb-2 text-danger"></i>
+                                    <h6 className="mb-0 text-uppercase fs-7">Rider</h6>
+                                </div>
                             </div>
                         </div>
 
@@ -154,17 +162,18 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                     />
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="mb-3 col-12 col-lg">
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        placeholder="Email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                </div>
 
+                            <div className="mb-3 col-12">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="row">
                                 <div className="mb-3 col-12 col-lg">
                                     <input
                                         type="password"
@@ -172,6 +181,16 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                         placeholder="Password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="mb-3 col-12 col-lg">
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        placeholder="Confirm Password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -196,6 +215,18 @@ function RegisterModal({ setShowRegister, setShowLogin }) {
                                             />
                                         </div>
                                     )}
+                                </div>
+                            )}
+
+                            {role === "rider" && (
+                                <div className="mb-3 col-12">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Vehicle Number"
+                                        value={vehicleInfo}
+                                        onChange={(e) => setVehicleInfo(e.target.value)}
+                                    />
                                 </div>
                             )}
                         </form>

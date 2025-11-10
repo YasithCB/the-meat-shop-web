@@ -52,7 +52,7 @@ const BestSelling1 = () => {
                 {products.slice(0,5).map((item, i) => (
                     <div key={i} className="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s">
                         <div className="dishes-thumb">
-                            <img src={getImageUrl(item.img)} alt="thmb" />
+                            <img src={getImageUrl(item.img)} alt="thmb" height={150} />
                         </div>
                         <Link to="/menu">
                             <h3>{item.name}</h3>

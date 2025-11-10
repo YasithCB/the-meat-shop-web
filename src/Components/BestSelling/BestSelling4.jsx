@@ -35,7 +35,7 @@ const BestSelling4 = () => {
     }
 
     return (
-        <section className="popular-dishes-section fix section-padding">
+        <section className="popular-dishes-section fix section-padding pt-5">
             <div className="popular-dishes-wrapper style1">
                 <div className="shape1 d-none d-xxl-block">
                     <img src="/assets/img/shape/popularDishesShape1_1.png" alt="shape"/>
@@ -46,8 +46,7 @@ const BestSelling4 = () => {
 
                 <div className="container">
                     <div className="title-area">
-                        <div
-                            className="sub-title text-center text-danger wow fadeInUp d-flex flex-row justify-content-center align-items-center"
+                        <div className="sub-title text-center text-danger wow fadeInUp d-flex flex-row justify-content-center align-items-center"
                             data-wow-delay="0.5s">
                             <Flame className="me-2 text-danger" size={22}/>
                             <p className='pt-1'>EXPLORE</p>
@@ -56,29 +55,29 @@ const BestSelling4 = () => {
                             MAIN CATEGORIES
                         </h2>
                     </div>
-                    <div className="dishes-card-wrap style1 best-selling-area d-flex">
-                        {categories.map((item, i) => (
-                            <Link
-                                to='/shop/category'
-                                state={{categoryName : item.name, categoryId : item.id}}
-                                key={i}
-                            >
-                                <div
-                                    key={i}
-                                    className="dishes-card style1 wow fadeInUp col-12 col-lg cs-pointer"
-                                    data-wow-delay="0.2s"
-                                >
-                                    <div className="dishes-thumb">
-                                        <img src={getImage(item.id)} alt="thmb" />
-                                    </div>
-                                    <h3>{item.name}</h3>
+                </div>
 
-                                    <p>{item.subtitle}</p>
-                                    <div className="social-profile"></div>
+                <div className="dishes-card-wrap style1 best-selling-area mx-5 px-lg-5">
+                    {categories.map((category, i) => (
+                        <div key={i} className="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s">
+                            <div className="dishes-thumb">
+                                <div className='item-thumb'>
+                                    <img src={getImage(category.id)} className='item-thumb-img' alt="thmb"/>
                                 </div>
-                            </Link>
-                        ))}
-                    </div>
+                                <div className="circle-shape">
+                                    <img className="cir36" src="/assets/img/food-items/circleShape.png" alt="shape" />
+                                </div>
+                            </div>
+                            <div className="dishes-content pt-2">
+                                <Link to="/shop/category">
+                                    <h3>{category.name}</h3>
+                                </Link>
+                                <Link to="/shop/category" state={{ categoryName: category.name, categoryId: category.id }} className="theme-btn style6">
+                                    <span>Shop Now</span>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
             </div>
