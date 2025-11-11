@@ -4,8 +4,8 @@ const FoodItemCard = ({img,title,content,price}) => {
     return (
         <div className="single-menu-items p-2">
         <div className="details">
-            <div className="menu-item-thumb">
-                <img src={img} alt="thumb"/>
+            <div className="menu-item-thumb item-thumb">
+                <img src={img} alt="thumb" className='item-thumb-img'/>
             </div>
             <div className="menu-content">
                 <Link to="/menu">

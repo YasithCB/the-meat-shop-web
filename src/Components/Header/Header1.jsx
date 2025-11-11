@@ -10,6 +10,7 @@ import {toast} from "react-toastify";
 import RegisterModal from "../Modals/RegisterModal.jsx";
 import AddProductModal from "../Modals/AddProductModal.jsx";
 import {Package} from "lucide-react";
+import ForgotPasswordModal from "../Modals/ForgotPasswordModal.jsx";
 
 export default function Header1({variant}) {
     const {setCurrentUser, setAuthToken, currentUser, currentRole, setCurrentRole, logout} = useContextElement();
@@ -21,6 +22,7 @@ export default function Header1({variant}) {
 
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+    const [showForgot, setShowForgot] = useState(false);
     const [showAddProduct, setShowAddProduct] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -197,16 +199,16 @@ export default function Header1({variant}) {
 
                             <div className="cs_main_header_center">
                                 <div className="cs_nav cs_primary_font fw-medium">
-                  <span
-                      className={
-                          mobileToggle
-                              ? 'cs-munu_toggle cs_teggle_active'
-                              : 'cs-munu_toggle'
-                      }
-                      onClick={() => setMobileToggle(!mobileToggle)}
-                  >
-                    <span></span>
-                  </span>
+                                      <span
+                                          className={
+                                              mobileToggle
+                                                  ? 'cs-munu_toggle cs_teggle_active'
+                                                  : 'cs-munu_toggle'
+                                          }
+                                          onClick={() => setMobileToggle(!mobileToggle)}
+                                      >
+                                        <span></span>
+                                      </span>
                                     <Nav setMobileToggle={setMobileToggle}/>
                                 </div>
                             </div>
@@ -307,6 +309,22 @@ export default function Header1({variant}) {
                                                                 </div>
                                                             </div>
                                                         </form>
+
+                                                        {/* FORGOT PASSWORD BUTTON */}
+                                                        <div className='text-center'>
+                                                            <span>Forgot Password? </span>
+                                                            <a
+                                                                href="#"
+                                                                onClick={() => {
+                                                                    setShowLogin(false);
+                                                                    setShowForgot(true);
+                                                                }}
+                                                                className="text-danger fw-bold text-decoration-none"
+                                                                style={{cursor: "pointer"}}
+                                                            >
+                                                                Reset Now
+                                                            </a>
+                                                        </div>
                                                     </div>
 
                                                     {loading ?
@@ -386,7 +404,12 @@ export default function Header1({variant}) {
 
                                     {/* REGISTER MODAL */}
                                     {showRegister &&
-                                        <RegisterModal setShowRegister={setShowRegister} setShowLogin={setShowLogin}/>}
+                                        <RegisterModal setShowRegister={setShowRegister} setShowLogin={setShowLogin}/>
+                                    }
+                                    {/* FORGOT PASSWORD MODAL */}
+                                    {showForgot &&
+                                        <ForgotPasswordModal setShowForgot={setShowForgot} setShowLogin={setShowLogin}/>
+                                    }
                                     {/* ADD PRODUCT MODAL */}
                                     {showAddProduct && <AddProductModal setShowAddProduct={setShowAddProduct}/>}
                                 </div>

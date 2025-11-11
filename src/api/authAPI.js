@@ -18,3 +18,21 @@ export const signup = async (formData, role) => {
         },
     });
 };
+
+// new → send reset code to email
+export function forgotPassword(data, role) {
+    // data = { email }
+    return fetchWrapper(`/auth/forgot-password/${role}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+    });
+}
+
+// new → verify code + update password
+export function resetPassword(data, role) {
+    // data = { email, code, newPassword }
+    return fetchWrapper(`/auth/reset-password/${role}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+    });
+}
