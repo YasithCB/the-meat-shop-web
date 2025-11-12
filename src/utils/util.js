@@ -32,3 +32,9 @@ export const scrollToTop = () => {
         behavior: "smooth", // smooth scroll
     });
 };
+
+// src/utils/randomRating.js
+export function getRandomRating(min = 3.5, max = 5.0, decimals = 1) {
+    const rating = Math.random() * (max - min) + min;
+    return parseFloat(rating.toFixed(decimals));
+}

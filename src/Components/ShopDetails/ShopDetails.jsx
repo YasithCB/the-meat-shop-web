@@ -57,8 +57,9 @@ const ShopDetails = ({product}) => {
                                                 <span className="rating">1</span> customer rating</span>
                                             </div>
 
-                                            <a href="shop-details.html" className="woocommerce-review-link">
-                                                (<span className="count">2</span> customer reviews)
+                                            <a className='text-secondary'>
+                                                <span className="count">{reviewsList.length} </span>
+                                                customer reviews
                                             </a>
                                         </div>
 
@@ -100,14 +101,15 @@ const ShopDetails = ({product}) => {
                                         <div className="share">
                                             <h6>share with friends</h6>
                                             <ul className="social-media">
-                                                <li><a href="https://www.facebook.com"> <i
+                                                <li><a href="https://www.facebook.com" target='_blank'>
+                                                    <i
                                                     className="bi bi-facebook"></i> </a></li>
-                                                <li><a href="https://www.youtube.com"><i className="bi bi-youtube"></i>
+                                                <li><a href="https://www.youtube.com" target='_blank'><i className="bi bi-youtube"></i>
                                                 </a></li>
-                                                <li><a href="https://www.x.com"> <i className="bi bi-twitter-x"></i>
+                                                <li><a href="https://www.x.com" target='_blank'> <i className="bi bi-twitter-x"></i>
                                                 </a>
                                                 </li>
-                                                <li><a href="https://www.linkedin.com"> <i
+                                                <li><a href="https://www.linkedin.com" target='_blank'> <i
                                                     className="bi bi-linkedin"></i> </a></li>
                                             </ul>
                                         </div>

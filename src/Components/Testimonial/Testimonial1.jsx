@@ -51,7 +51,7 @@ const Testimonial1 = ({className = ''}) => {
         const [toggle, setToggle] = useState(false);
       
         const handelClick = () => {
-          setIframeSrc("https://www.youtube.com/embed/rRid6GCJtgc");
+          setIframeSrc("#");
           setToggle(!toggle);
         };
         const handelClose = () => {

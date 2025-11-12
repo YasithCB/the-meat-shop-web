@@ -193,7 +193,7 @@ export default function Header1({variant}) {
                         <div className="cs_main_header_in">
                             <div className="cs_main_header_left">
                                 <Link className="cs_site_branding" to="/">
-                                    <img src="/logo-white.png" alt="Logo"/>
+                                    <img src="/logo.png" alt="Logo" height={65}/>
                                 </Link>
                             </div>
 

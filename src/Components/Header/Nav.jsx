@@ -1,7 +1,6 @@
-import DropDown from './DropDown';
 import { Link } from 'react-router-dom';
 
-export default function Nav({ setMobileToggle }) {
+export default function Nav() {
   return (
     <ul className="cs_nav_list fw-medium">
       <li>
@@ -11,7 +10,7 @@ export default function Nav({ setMobileToggle }) {
         <Link to="/about2">About</Link>
       </li>
       <li>
-        <Link to="/service">Services</Link>
+        <Link to="/suppliers">Suppliers</Link>
       </li>
       <li>
         <Link to="/menu2">Shop</Link>

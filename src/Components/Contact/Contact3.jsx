@@ -10,19 +10,8 @@ const Contact3 = () => {
 
                 <div className="row gx-4 gy-4 d-flex align-items-stretch">
 
-                    {/* Address */}
-                    <div className="col-12 col-md-3">
-                        <div className="card h-100 text-center border-0 shadow-sm rounded-4 p-4 contact-card">
-                            <div className="mb-3 d-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle mx-auto" style={{width: '56px', height: '56px'}}>
-                                <MapPin className="text-danger" size={28} />
-                            </div>
-                            <h5 className="fw-semibold mb-2">Our Address</h5>
-                            <p className="text-muted mb-0">{ADDRESS}</p>
-                        </div>
-                    </div>
-
                     {/* Email */}
-                    <div className="col-12 col-md-3">
+                    <div className="col-12 col-md">
                         <div className="card h-100 text-center border-0 shadow-sm rounded-4 p-4 contact-card">
                             <div className="mb-3 d-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle mx-auto" style={{width: '56px', height: '56px'}}>
                                 <Mail className="text-danger" size={28} />
@@ -34,7 +23,7 @@ const Contact3 = () => {
                     </div>
 
                     {/* Phone */}
-                    <div className="col-12 col-md-3">
+                    <div className="col-12 col-md">
                         <div className="card h-100 text-center border-0 shadow-sm rounded-4 p-4 contact-card">
                             <div className="mb-3 d-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle mx-auto" style={{width: '56px', height: '56px'}}>
                                 <Phone className="text-danger" size={28} />
@@ -46,7 +35,7 @@ const Contact3 = () => {
                     </div>
 
                     {/* Opening Hours */}
-                    <div className="col-12 col-md-3">
+                    <div className="col-12 col-md">
                         <div className="card h-100 text-center border-0 shadow-sm rounded-4 p-4 contact-card">
                             <div className="mb-3 d-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle mx-auto" style={{width: '56px', height: '56px'}}>
                                 <Clock className="text-danger" size={28} />
@@ -115,12 +104,6 @@ const Contact3 = () => {
         </div>
     </div>
 
-            <div className="map-wrapper contact-area-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.5151588227363!2d54.37124937599515!3d24.467601260864065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e66237e20bb83%3A0x8b054a249342fafe!2sMedia%20Store!5e0!3m2!1sen!2sae!4v1762331519267!5m2!1sen!2sae"
-                    loading="lazy"
-                ></iframe>
-            </div>
         </div>
     );
 };

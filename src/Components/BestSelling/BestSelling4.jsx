@@ -59,24 +59,32 @@ const BestSelling4 = () => {
 
                 <div className="dishes-card-wrap style1 best-selling-area mx-5 px-lg-5">
                     {categories.map((category, i) => (
-                        <div key={i} className="dishes-card style1 wow fadeInUp" data-wow-delay="0.2s">
+                        <div
+                            key={i}
+                            className="dishes-card style2 wow fadeInUp d-flex flex-column justify-content-end"
+                            data-wow-delay="0.2s"
+                            style={{ height: 250 }}
+                        >
                             <div className="dishes-thumb">
-                                <div className='item-thumb'>
-                                    <img src={getImage(category.id)} className='item-thumb-img' alt="thmb"/>
+                                <div className="item-thumb">
+                                    <img src={getImage(category.id)} className="item-thumb-img w-100" alt="thumb" />
                                 </div>
                                 <div className="circle-shape">
                                     <img className="cir36" src="/assets/img/food-items/circleShape.png" alt="shape" />
                                 </div>
                             </div>
-                            <div className="dishes-content pt-2">
+
+                            {/* Content pushed to bottom */}
+                            <div className="d-flex flex-column justify-content-end mt-auto p-3">
                                 <Link to="/shop/category">
-                                    <h3>{category.name}</h3>
+                                    <h3 className="mb-3">{category.name}</h3>
                                 </Link>
                                 <Link to="/shop/category" state={{ categoryName: category.name, categoryId: category.id }} className="theme-btn style6">
                                     <span>Shop Now</span>
                                 </Link>
                             </div>
                         </div>
+
                     ))}
                 </div>
 

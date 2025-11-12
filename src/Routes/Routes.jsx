@@ -37,6 +37,7 @@ import PaymentPage from "../Pages/PaymentPage.jsx";
 import ShopSubCategoriesPage from "../Pages/ShopSubCategoriesPage.jsx";
 import MyProductsPage from "../Pages/MyProductsPage.jsx";
 import SuppliersPage from "../Pages/SuppliersPage.jsx";
+import SupplierDetails from "../Components/Custom/SupplierDetails.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
         {
           path: "/suppliers",
           element: <SuppliersPage></SuppliersPage>,
+        },
+        {
+          path: "/supplier-details",
+          element: <SupplierDetails></SupplierDetails>,
         },
 
         {

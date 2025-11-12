@@ -1,24 +1,63 @@
 import { Link } from "react-router-dom";
+import {getImageUrl, getRandomRating} from "../../utils/util.js";
 
-const ShopListCard = ({img,title,content,price}) => {
+const ShopListCard = ({product}) => {
+    const randomRating = getRandomRating();
+
     return (
         <div className="dishes-card style4 wow fadeInUp" data-wow-delay="0.2s">
         <div className="dishes-thumb">
-            <img src={img} alt="thumb" />
-            <div className="circle-shape"><img className="cir36"
-                    src="/assets/img/food-items/circleShape.png" alt="shape" /></div>
+            <img
+                src={getImageUrl(product.img)}
+                alt="thumb"
+                height={155}
+                width={155}
+                style={{
+                    borderRadius: "50%",
+                    objectFit: "cover"
+                }}
+            />
+
+
+            <div className="circle-shape">
+                <img
+                    className="cir36"
+                    src="/assets/img/food-items/circleShape.png"
+                    alt="shape"
+                />
+            </div>
         </div>
         <div className="dishes-content">
             <Link to="/shop/shop-details">
-                <h3>{title}</h3>
+                <h3>{product.title}</h3>
             </Link>
             <div className="icon">
                 <a href="#"> <i className="fa-regular fa-heart"></i></a>
             </div>
-            <div className="star"><img src="/assets/img/icon/star2.svg" alt="icon" /></div>
-            <div className="text">{content}</div>
-            <h6>{price}</h6>
-            <Link to="/shop/shop-details" className="theme-btn style6"> Order Now <i className="bi bi-basket2"></i></Link>
+
+            {/* RATING | REVIEW */}
+            <div className="d-flex flex-column align-items-start mb-2">
+                <div className="d-flex align-items-center mb-1">
+                    {/* Stars */}
+                    {[...Array(5)].map((_, i) => (
+                        <i
+                            key={i}
+                            className={`bi ${
+                                i + 1 <= Math.floor(randomRating)
+                                    ? "bi-star-fill text-warning"
+                                    : i + 0.5 <= randomRating
+                                        ? "bi-star-half text-warning"
+                                        : "bi-star text-warning"
+                            } me-1`}
+                        ></i>
+                    ))}
+                    <span className="fw-semibold ms-1">{randomRating}</span>
+                </div>
+            </div>
+
+            <div className="text">{product.content}</div>
+            <h6>{product.price} AED</h6>
+            <Link to="/shop/shop-details" state={{product}} className="theme-btn style6"> Order Now <i className="bi bi-basket2"></i></Link>
         </div>
     </div>
     );

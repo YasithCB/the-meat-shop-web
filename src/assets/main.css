@@ -9177,6 +9177,7 @@ input.main-search-input::placeholder {
 .services-card.style2:hover {
   background-color: var(--title);
   margin-top: -5px;
+  cursor: pointer;
 }
 .services-card.style2:hover .services-card_icon {
   transform: rotate(360deg);
@@ -9205,10 +9206,13 @@ input.main-search-input::placeholder {
   right: 30px;
 }
 .services-card.style2:hover .services-card_title a {
-  color: var(--white);
+  color: var(--theme);
 }
 .services-card.style2:hover .services-card_text {
   color: var(--white);
+}
+.services-card.style2:hover p {
+    color: var(--theme);
 }
 
 .service-details-area .service-post-details .single-service-post .post-featured-thumb {
@@ -11743,7 +11747,7 @@ input.main-search-input::placeholder {
   text-align: center;
   margin-right: 10px;
   background-color: var(--white);
-  color: var(--title);
+  color: var(--title) !important;
   border: 1px solid var(--border-2);
   border-radius: 30px;
   -webkit-border-radius: 30px;

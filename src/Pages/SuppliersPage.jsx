@@ -60,27 +60,29 @@ const SuppliersPage = () => {
 
                         <div className="dishes-card-wrap style1">
                             {suppliers.map((item, i) => (
-                                <div key={i} className="dishes-card supplier-card style1 wow fadeInUp" data-wow-delay="0.2s">
-                                    <div className="dishes-thumb">
-                                        <img src={getImageUrl(item.logo)} alt="thmb" />
-                                    </div>
-                                    <Link to="/menu">
-                                        <h3>{item.name}</h3>
-                                    </Link>
-                                    <p>Joined in {formatDate(item.created_at)}</p>
-                                    <span className='fs-9 fw-bold text-danger'>ACTIVE LISTINGS : {item.product_count} </span>
-                                    <p>{item.email} </p>
+                                <Link to='/supplier-details' state={{supplier : item}} key={i}>
+                                    <div className="dishes-card supplier-card style1 wow fadeInUp cs-pointer" data-wow-delay="0.2s">
+                                        <div className="dishes-thumb">
+                                            <img src={getImageUrl(item.logo)} alt="thmb" />
+                                        </div>
+                                        <a>
+                                            <h3>{item.name}</h3>
+                                        </a>
+                                        <p>Joined in {formatDate(item.created_at)}</p>
+                                        <span className='fs-9 fw-bold text-danger'>ACTIVE LISTINGS : {item.product_count} </span>
+                                        <p>{item.email} </p>
 
-                                    { item.verified ?
-                                        <div className="social-profile">
+                                        { item.verified ?
+                                            <div className="social-profile">
                                             <span className="plus-btn">
                                                  <ShieldCheck />
                                             </span>
-                                        </div>
-                                        :
-                                        null
-                                    }
-                                </div>
+                                            </div>
+                                            :
+                                            null
+                                        }
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

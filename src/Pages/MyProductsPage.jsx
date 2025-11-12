@@ -13,6 +13,8 @@ const MyProductsPage = () => {
     const [showEditProduct, setShowEditProduct] = useState(false); // modal visibility
     const [loading, setLoading] = useState(false);
 
+    const supplierProducts = products.filter(item => item.supplier_id === currentUser.id);
+
     useEffect(() => {
         scrollToTop();
 
@@ -59,10 +61,9 @@ const MyProductsPage = () => {
                             </h2>
                         </div>
 
-                        <div className="dishes-card-wrap style1 best-selling-area">
-                            {products
-                                .filter((item) => item.supplier_id === currentUser.id)
-                                .map((product, i) => (
+                        {supplierProducts.length > 0 ? (
+                            <div className="dishes-card-wrap style1 best-selling-area">
+                                {supplierProducts.map((product, i) => (
                                     <div
                                         key={i}
                                         className="dishes-card style2 wow fadeInUp"
@@ -107,7 +108,10 @@ const MyProductsPage = () => {
                                         </div>
                                     </div>
                                 ))}
-                        </div>
+                            </div>
+                        ) : (
+                            <p className="text-center mt-4">No products found for this supplier.</p>
+                        )}
                     </div>
                 </div>
             </section>

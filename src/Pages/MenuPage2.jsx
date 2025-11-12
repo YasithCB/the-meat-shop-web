@@ -1,6 +1,5 @@
 import BestSelling4 from "../Components/BestSelling/BestSelling4";
 import BreadCumb from "../Components/Common/BreadCumb";
-import Testimonial2 from "../Components/Testimonial/Testimonial2";
 import {useEffect} from "react";
 import {scrollToTop} from "../utils/util.js";
 import CtaBanner4 from "../Components/CtaBanner/CtaBanner4.jsx";

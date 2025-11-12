@@ -69,7 +69,7 @@ const SuppliersSlider = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="btn-wrapper wow fadeInUp" data-wow-delay="0.9s">
+                    <div className="btn-wrapper wow fadeInUp d-flex justify-content-center" data-wow-delay="0.9s">
                         <Link className="theme-btn" to="/suppliers">VIEW ALL SUPPLIERS <i className="bi bi-arrow-right"></i></Link>
                     </div>
                 </div>

@@ -12,9 +12,10 @@ const About2 = () => {
         const [toggle, setToggle] = useState(false);
       
         const handelClick = () => {
-          setIframeSrc("https://www.youtube.com/embed/rRid6GCJtgc");
+          setIframeSrc("#");
           setToggle(!toggle);
         };
+
         const handelClose = () => {
           setIframeSrc('about:blank');
           setToggle(!toggle);
@@ -32,8 +33,9 @@ const About2 = () => {
                                 <img src="/assets/img/about/aboutThumb2_1.png" alt="thumb" />
                                 <div className="video-wrap">
                                     <a onClick={handelClick} 
-                                        className="play-btn popup-video"><img className="cir36"
-                                            src="/assets/img/shape/player.svg" alt="icon" /></a>
+                                        className="play-btn popup-video">
+                                        <img className="cir36" src="/assets/img/shape/player.svg" alt="icon" />
+                                    </a>
                                 </div>
                             </div>
 
