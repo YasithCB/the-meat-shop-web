@@ -3,6 +3,7 @@ import {getImageUrl, scrollToTop} from "../../utils/util.js";
 import {Star, StarOff , ShoppingCart } from "lucide-react";
 import {useEffect, useState} from "react";
 import ReviewForm from "../Custom/ReviewForm.jsx";
+import {useContextElement} from "../../context/Context.jsx";
 
 const ShopDetails = ({product}) => {
     const supplier = product.supplier;
@@ -29,19 +30,15 @@ const ShopDetails = ({product}) => {
                         <div className="container">
                             <div className="row gx-60">
                                 <div className="col-lg-6">
-                                    <div className="product-big-img">
-                                        <div className="dishes-thumb">
-                                            <img src={getImageUrl(product.img)} alt="thmb" height={200}/>
-                                            <div className="circle-shape d-none d-md-block">
-                                                <img className="cir36"
-                                                     src="/assets/img/food-items/circleShape2.png"
-                                                     alt="shape"
-                                                     height={250}
-                                                />
-                                            </div>
-                                        </div>
+                                    <div className="full-img-box">
+                                        <img
+                                            src={getImageUrl(product.img)}
+                                            alt="thumb"
+                                            className="full-img"
+                                        />
                                     </div>
                                 </div>
+
                                 <div className="col-lg-6">
                                     <div className="product-about">
                                         <div className="title-wrapper">

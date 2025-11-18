@@ -329,7 +329,7 @@ const Checkout = ({product, quantity}) => {
 
             {/* SUBMIT */}
             <div className="col-12 form-group mb-0 mt-3">
-                <Link to='/shop/payment' state={{method : selectedPaymentMethod, totalPrice : totalPrice}}>
+                <Link to='/shop/payment' state={{method : selectedPaymentMethod, totalPrice : totalPrice, product: product}}>
                     <button className="theme-btn btn btn-primary w-100 text-uppercase fw-bold">
                         Continue to Payment
                     </button>

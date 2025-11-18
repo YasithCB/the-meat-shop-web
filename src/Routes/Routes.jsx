@@ -38,6 +38,7 @@ import ShopSubCategoriesPage from "../Pages/ShopSubCategoriesPage.jsx";
 import MyProductsPage from "../Pages/MyProductsPage.jsx";
 import SuppliersPage from "../Pages/SuppliersPage.jsx";
 import SupplierDetails from "../Components/Custom/SupplierDetails.jsx";
+import PaymentSuccessPage from "../Pages/PaymentSuccessPage.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -168,6 +169,10 @@ export const router = createBrowserRouter([
         {
           path: "/shop/payment",
           element: <PaymentPage></PaymentPage>,
+        },
+        {
+          path: "/shop/payment-success",
+          element: <PaymentSuccessPage></PaymentSuccessPage>,
         },
         {
           path: "/shop/wishlist",

@@ -3,20 +3,22 @@ import {Upload} from "lucide-react";
 import {toast} from "react-toastify";
 import {createCharge} from "../../api/paymentAPI.js";
 import {useContextElement} from "../../context/Context.jsx";
+import LoadingDots from "../Custom/loadingDots.jsx";
 
-const Checkout = ({totalPrice, method}) => {
-    const { currentUser } = useContextElement();
+const Checkout = ({totalPrice, method, product}) => {
+    const {currentUser} = useContextElement();
 
     const [paymentSlip, setPaymentSlip] = useState(null);
-    const [tokenId, setTokenId] = useState('');
+
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const configureCardSDK = async () => {
             const {renderTapCard, Theme, Currencies, Direction, Edges, Locale} = window.CardSDK
             const {unmount} = renderTapCard('card-sdk-id', {
-                publicKey: 'pk_test_nx0SMQFNreyZXchYHvKft7wg', // Tap's public key
+                publicKey: 'pk_test_9pGNWYLRj0iUFnOBkaqygh2T', // Tap's public key
                 merchant: {
-                    id: '67993052'
+                    id: '67993050'
                 },
                 transaction: {
                     amount: totalPrice,
@@ -52,11 +54,31 @@ const Checkout = ({totalPrice, method}) => {
                 },
                 onError: (data) => console.log('onError', data),
                 onSuccess: async (data) => {
-                    console.log('OnSuccess', data)
-                    setTokenId(data.id)
+                    console.log('onSuccess', data)
+                    const tokenId = data.id;
+
+                    if (!tokenId) {
+                        return
+                    }
+
+                    setLoading(true)
+
+                    // now safely use tokenResponse.id
+                    const createChargeResp = await createCharge({
+                        amount: totalPrice,
+                        token_id: tokenId,
+                        description: JSON.stringify(product),
+                        order_id: tokenId,
+                        customer_name: currentUser.name,
+                        customer_email: currentUser.email,
+                        customer_phone: currentUser.phone,
+                    });
+
+                    setLoading(false)
+                    window.location.href = createChargeResp.data.transaction.url;
                 },
                 onChangeSaveCardLater: (isSaveCardSelected) => {
-                } // isSaveCardSelected:boolean
+                }
             })
         }
 
@@ -72,40 +94,12 @@ const Checkout = ({totalPrice, method}) => {
             if (!paymentSlip) return toast.error("Please select a file first.");
         }
 
-        // ⏳ tokenize the card and wait
+        if (!currentUser) {
+            return toast.error("Please Login First!");
+        }
+
         await window.CardSDK.tokenize();
-
-        // now safely use tokenResponse.id
-        const createChargeResp = await createCharge({
-            amount: totalPrice,
-            token_id: tokenId,
-            description: '',
-            order_id: tokenId,
-            customer_name: currentUser.name,
-            customer_email: currentUser.email,
-            customer_phone: currentUser.phone,
-        });
-
-        // redirect to Tap payment page
-        window.location.href = createChargeResp.data.transaction.url;
-
-        // Example upload using FormData
-        // const formData = new FormData();
-        // formData.append("bankSlip", paymentSlip);
-        //
-        // fetch("/api/upload/bank-slip", {
-        //     method: "POST",
-        //     body: formData,
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         console.log("Uploaded:", data);
-        //         alert("Bank slip uploaded successfully!");
-        //     })
-        //     .catch((err) => {
-        //         console.error(err);
-        //         alert("Upload failed. Please try again.");
-        //     });
+        await window.CardSDK.tokenize();
     };
 
     return (
@@ -138,26 +132,27 @@ const Checkout = ({totalPrice, method}) => {
                             </label>
 
                             {paymentSlip && (
-                                <div className="d-flex align-items-center gap-3 mt-3 p-2 border rounded bg-white shadow-sm">
+                                <div
+                                    className="d-flex align-items-center gap-3 mt-3 p-2 border rounded bg-white shadow-sm">
                                     {/* Preview area */}
                                     {paymentSlip.type.startsWith("image/") ? (
                                         <img
                                             src={URL.createObjectURL(paymentSlip)}
                                             alt="Payment Slip Preview"
                                             className="rounded border"
-                                            style={{ width: "80px", height: "80px", objectFit: "cover" }}
+                                            style={{width: "80px", height: "80px", objectFit: "cover"}}
                                         />
                                     ) : paymentSlip.type === "application/pdf" ? (
                                         <div
                                             className="d-flex justify-content-center align-items-center bg-light rounded border"
-                                            style={{ width: "80px", height: "80px" }}
+                                            style={{width: "80px", height: "80px"}}
                                         >
                                             <i className="bi bi-file-earmark-pdf text-danger fs-2"></i>
                                         </div>
                                     ) : (
                                         <div
                                             className="d-flex justify-content-center align-items-center bg-light rounded border"
-                                            style={{ width: "80px", height: "80px" }}
+                                            style={{width: "80px", height: "80px"}}
                                         >
                                             <i className="bi bi-file-earmark text-secondary fs-2"></i>
                                         </div>
@@ -187,11 +182,15 @@ const Checkout = ({totalPrice, method}) => {
                 }
 
                 {/* SUBMIT */}
-                <div className="col-12 form-group mb-0 mt-3">
-                    <button onClick={handleUpload} className="theme-btn btn btn-primary w-100 text-uppercase fw-bold">
-                        Continue to Payment
-                    </button>
-                </div>
+                { loading ?
+                    <LoadingDots/>
+                    :
+                    <div className="col-12 form-group mb-0 mt-3">
+                        <button onClick={handleUpload} className="theme-btn btn btn-primary w-100 text-uppercase fw-bold">
+                            Continue to Payment
+                        </button>
+                    </div>
+                }
             </div>
         </div>
     );

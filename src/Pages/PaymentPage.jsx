@@ -4,7 +4,7 @@ import Payment from "../Components/Shop/Payment.jsx";
 
 const PaymentPage = () => {
     const location = useLocation();
-    const { totalPrice, method } = location.state || {};
+    const { totalPrice, method, product } = location.state || {};
 
     return (
         <div>
@@ -12,7 +12,7 @@ const PaymentPage = () => {
                 bgimg="/assets/img/bg/breadcumb.jpg"
                 Title="Payment"
             ></BreadCumb>
-            <Payment method={method} totalPrice={totalPrice} ></Payment>
+            <Payment method={method} totalPrice={totalPrice} product={product} ></Payment>
         </div>
     );
 };

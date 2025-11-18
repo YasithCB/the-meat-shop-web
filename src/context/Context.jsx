@@ -13,6 +13,7 @@ export default function Context({children}) {
 
     const [products, setProducts] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
+    const [cartProducts, setCartProducts] = useState([]);
 
     useEffect(() => {
         if (currentUser && authToken) {
@@ -43,11 +44,37 @@ export default function Context({children}) {
     };
     // SUPPLIERS ----------------------------------------------
 
+    // CART ----------------------------------------------
+    // LocalStorage sync — CART
+    useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem("meat_shop_cartList"));
+        setCartProducts(storedCart);
+        console.log('storedCart: ', storedCart);
+        console.log('storedCart: ', storedCart);
+        console.log('storedCart: ', storedCart);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("meat_shop_cartList", JSON.stringify(cartProducts));
+    }, [cartProducts]);
+
+    const addProductToCart = async (product) => {
+        setCartProducts(product);
+        localStorage.setItem("meat_shop_cartList", JSON.stringify(product));
+    };
+
+    const clearCart = async () => {
+        // Clear local state and localStorage
+        setCartProducts([]);
+        localStorage.setItem("meat_shop_cartList", JSON.stringify([]));
+    };
+    // CART ----------------------------------------------
+
     // 🧠 AUTH — load from localStorage once
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        const token = localStorage.getItem("auth_token");
-        const role = localStorage.getItem("role");
+        const user = JSON.parse(localStorage.getItem("meat_shop_user"));
+        const token = localStorage.getItem("meat_shop_auth_token");
+        const role = localStorage.getItem("meat_shop_role");
         if (user && token && role) {
             setCurrentUser(user);
             setAuthToken(token);
@@ -58,13 +85,13 @@ export default function Context({children}) {
     // 🧠 AUTH — update localStorage when auth changes
     useEffect(() => {
         if (currentUser && authToken && currentRole) {
-            localStorage.setItem("user", JSON.stringify(currentUser));
-            localStorage.setItem("auth_token", authToken.toString());
-            localStorage.setItem("role", currentRole.toString());
+            localStorage.setItem("meat_shop_user", JSON.stringify(currentUser));
+            localStorage.setItem("meat_shop_auth_token", authToken.toString());
+            localStorage.setItem("meat_shop_role", currentRole.toString());
         } else {
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth_token");
-            localStorage.removeItem("role");
+            localStorage.removeItem("meat_shop_user");
+            localStorage.removeItem("meat_shop_auth_token");
+            localStorage.removeItem("meat_shop_role");
         }
     }, [currentUser, authToken, currentRole]);
 
@@ -84,6 +111,11 @@ export default function Context({children}) {
         suppliers,
         setSuppliers,
         fetchSuppliersFromDB,
+
+        // CART
+        clearCart,
+        addProductToCart,
+        cartProducts,
 
         // 👤 Auth
         currentUser,
